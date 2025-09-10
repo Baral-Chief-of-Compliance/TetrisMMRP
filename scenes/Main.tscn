@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdxrvdedkcdfu"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_gy42u"]
+[ext_resource type="Texture2D" uid="uid://chuy2t0jlq432" path="res://assets/cells_back.png" id="2_1lpjx"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_gy42u")
+
+[node name="Back" type="Sprite2D" parent="."]
+position = Vector2(420, 741)
+texture = ExtResource("2_1lpjx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(300, 600)
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 740.0
+offset_bottom = 1380.0
+size_flags_horizontal = 3
+color = Color(0, 0.819608, 0.952941, 0.270588)
+
+[node name="GameBoard" type="Node2D" parent="."]
+position = Vector2(100, 100)
+
+[node name="Grid" type="Node2D" parent="GameBoard"]
+
+[node name="Pieces" type="Node2D" parent="GameBoard"]
+
+[node name="NextPieceDisplay" type="Node2D" parent="."]
+position = Vector2(800, 100)
+
+[node name="ParticlesContainer" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 400.0
+offset_right = 840.0
+offset_bottom = 423.0
+
+[node name="LevelLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 470.0
+offset_right = 840.0
+offset_bottom = 493.0
+
+[node name="SpeedLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 540.0
+offset_right = 801.0
+offset_bottom = 563.0
+
+[node name="GameOverLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 640.0
+offset_right = 593.0
+offset_bottom = 666.0
+text = "GAME OVER\\nPress Enter to restart"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(446, 661)
+offset = Vector2(2.63, 0)
+
+[node name="Timer" type="Timer" parent="."]
