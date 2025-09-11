@@ -26,6 +26,24 @@ const PIECE_SCENES = {
 @onready var I_3 : Texture2D = load("res://assets/pieces/I/I_3.png")
 @onready var I_4 : Texture2D = load("res://assets/pieces/I/I_4.png")
 
+## Для фигуры I на 90 градусов
+@onready var I_1_90 : Texture2D = load("res://assets/pieces/I/90/I_1_90.png")
+@onready var I_2_90 : Texture2D = load("res://assets/pieces/I/90/I_2_90.png")
+@onready var I_3_90 : Texture2D = load("res://assets/pieces/I/90/I_3_90.png")
+@onready var I_4_90 : Texture2D = load("res://assets/pieces/I/90/I_4_90.png")
+
+## Для фигуры I на 180 градусов
+@onready var I_1_180 : Texture2D = load("res://assets/pieces/I/180/I_1_180.png")
+@onready var I_2_180 : Texture2D = load("res://assets/pieces/I/180/I_2_180.png")
+@onready var I_3_180 : Texture2D = load("res://assets/pieces/I/180/I_3_180.png")
+@onready var I_4_180 : Texture2D = load("res://assets/pieces/I/180/I_4_180.png")
+
+## Для фигуры I на 270 градусов
+@onready var I_1_270 : Texture2D = load("res://assets/pieces/I/270/I_1_270.png")
+@onready var I_2_270 : Texture2D = load("res://assets/pieces/I/270/I_2_270.png")
+@onready var I_3_270 : Texture2D = load("res://assets/pieces/I/270/I_3_270.png")
+@onready var I_4_270 : Texture2D = load("res://assets/pieces/I/270/I_4_270.png")
+
 ## Для фигуры O
 @onready var O_1 : Texture2D = load("res://assets/pieces/O/o_1.png")
 @onready var O_2 : Texture2D = load("res://assets/pieces/O/o_2.png")
@@ -38,11 +56,47 @@ const PIECE_SCENES = {
 @onready var T_3 : Texture2D = load("res://assets/pieces/T/T_3.png")
 @onready var T_4 : Texture2D = load("res://assets/pieces/T/T_4.png")
 
+## Для фигуры T на 90
+@onready var T_1_90 : Texture2D = load("res://assets/pieces/T/90/T_1_90.png")
+@onready var T_2_90 : Texture2D = load("res://assets/pieces/T/90/T_2_90.png")
+@onready var T_3_90 : Texture2D = load("res://assets/pieces/T/90/T_3_90.png")
+@onready var T_4_90 : Texture2D = load("res://assets/pieces/T/90/T_4_90.png")
+
+## Для фигуры T на 180
+@onready var T_1_180 : Texture2D = load("res://assets/pieces/T/180/T_1_180.png")
+@onready var T_2_180 : Texture2D = load("res://assets/pieces/T/180/T_2_180.png")
+@onready var T_3_180 : Texture2D = load("res://assets/pieces/T/180/T_3_180.png")
+@onready var T_4_180 : Texture2D = load("res://assets/pieces/T/180/T_4_180.png")
+
+## Для фигуры T на 270
+@onready var T_1_270 : Texture2D = load("res://assets/pieces/T/270/T_1_270.png")
+@onready var T_2_270 : Texture2D = load("res://assets/pieces/T/270/T_2_270.png")
+@onready var T_3_270 : Texture2D = load("res://assets/pieces/T/270/T_3_270.png")
+@onready var T_4_270 : Texture2D = load("res://assets/pieces/T/270/T_4_270.png")
+
 ## Для фигуры L
 @onready var L_1 : Texture2D = load("res://assets/pieces/L/L_1.png")
 @onready var L_2 : Texture2D = load("res://assets/pieces/L/L_2.png")
 @onready var L_3 : Texture2D = load("res://assets/pieces/L/L_3.png")
 @onready var L_4 : Texture2D = load("res://assets/pieces/L/L_4.png")
+
+## Для фигуры L на 90
+@onready var L_1_90 : Texture2D = load("res://assets/pieces/L/90/L_1_90.png")
+@onready var L_2_90 : Texture2D = load("res://assets/pieces/L/90/L_2_90.png")
+@onready var L_3_90 : Texture2D = load("res://assets/pieces/L/90/L_3_90.png")
+@onready var L_4_90 : Texture2D = load("res://assets/pieces/L/90/L_4_90.png")
+
+## Для фигуры L на 180
+@onready var L_1_180 : Texture2D = load("res://assets/pieces/L/180/L_1_180.png")
+@onready var L_2_180 : Texture2D = load("res://assets/pieces/L/180/L_2_180.png")
+@onready var L_3_180 : Texture2D = load("res://assets/pieces/L/180/L_3_180.png")
+@onready var L_4_180 : Texture2D = load("res://assets/pieces/L/180/L_4_180.png")
+
+## Для фигуры L на 270
+@onready var L_1_270 : Texture2D = load("res://assets/pieces/L/270/L_1_270.png")
+@onready var L_2_270 : Texture2D = load("res://assets/pieces/L/270/L_2_270.png")
+@onready var L_3_270 : Texture2D = load("res://assets/pieces/L/270/L_3_270.png")
+@onready var L_4_270 : Texture2D = load("res://assets/pieces/L/270/L_4_270.png")
 
 ## Для фигуры J
 @onready var J_1 : Texture2D = load("res://assets/pieces/J/J_1.png")
@@ -50,15 +104,63 @@ const PIECE_SCENES = {
 @onready var J_3 : Texture2D = load("res://assets/pieces/J/J_3.png")
 @onready var J_4 : Texture2D = load("res://assets/pieces/J/J_4.png")
 
+## Для фигуры J на 90
+@onready var J_1_90 : Texture2D = load("res://assets/pieces/J/90/J_1_90.png")
+@onready var J_2_90 : Texture2D = load("res://assets/pieces/J/90/J_2_90.png")
+@onready var J_3_90 : Texture2D = load("res://assets/pieces/J/90/J_3_90.png")
+@onready var J_4_90 : Texture2D = load("res://assets/pieces/J/90/J_4_90.png")
+
+## Для фигуры J на 180
+@onready var J_1_180 : Texture2D = load("res://assets/pieces/J/180/J_1_180.png")
+@onready var J_2_180 : Texture2D = load("res://assets/pieces/J/180/J_2_180.png")
+@onready var J_3_180 : Texture2D = load("res://assets/pieces/J/180/J_3_180.png")
+@onready var J_4_180 : Texture2D = load("res://assets/pieces/J/180/J_4_180.png")
+
+## Для фигуры J на 270
+@onready var J_1_270 : Texture2D = load("res://assets/pieces/J/270/J_1_270.png")
+@onready var J_2_270 : Texture2D = load("res://assets/pieces/J/270/J_2_270.png")
+@onready var J_3_270 : Texture2D = load("res://assets/pieces/J/270/J_3_270.png")
+@onready var J_4_270 : Texture2D = load("res://assets/pieces/J/270/J_4_270.png")
+
 ## Для фигуры S
 @onready var S_1 : Texture2D = load("res://assets/pieces/S/S_1.png")
 @onready var S_2 : Texture2D = load("res://assets/pieces/S/S_2.png")
 @onready var S_3 : Texture2D = load("res://assets/pieces/S/S_3/S_3.png")
 @onready var S_4 : Texture2D = load("res://assets/pieces/S/S_4/S_4.png")
 
+## Для фигуры S на 90
+@onready var S_1_90 : Texture2D = load("res://assets/pieces/S/90/S_1_90.png")
+@onready var S_2_90 : Texture2D = load("res://assets/pieces/S/90/S_2_90.png")
+@onready var S_3_90 : Texture2D = load("res://assets/pieces/S/90/S_3_90.png")
+@onready var S_4_90 : Texture2D = load("res://assets/pieces/S/90/S_4_90.png")
+
+## Для фигуры S на 180
+@onready var S_1_180 : Texture2D = load("res://assets/pieces/S/180/S_1_180.png")
+@onready var S_2_180 : Texture2D = load("res://assets/pieces/S/180/S_2_180.png")
+@onready var S_3_180 : Texture2D = load("res://assets/pieces/S/180/S_3_180.png")
+@onready var S_4_180 : Texture2D = load("res://assets/pieces/S/180/S_4_180.png")
+
+## Для фигуры S на 270
+@onready var S_1_270 : Texture2D = load("res://assets/pieces/S/270/S_1_270.png")
+@onready var S_2_270 : Texture2D = load("res://assets/pieces/S/270/S_2_270.png")
+@onready var S_3_270 : Texture2D = load("res://assets/pieces/S/270/S_3_270.png")
+@onready var S_4_270 : Texture2D = load("res://assets/pieces/S/270/S_4_270.png")
+
 ## Для фигуры LINE
 @onready var line_1 : Texture2D = load("res://assets/pieces/line/line_1.png")
 @onready var line_2 : Texture2D = load("res://assets/pieces/line/line_2.png")
+
+## Для фигуры LINE на 90
+@onready var line_1_90 : Texture2D = load("res://assets/pieces/line/90/line_1_90.png")
+@onready var line_2_90 : Texture2D = load("res://assets/pieces/line/90/line_2_90.png")
+
+## Для фигуры LINE на 180
+@onready var line_1_180 : Texture2D = load("res://assets/pieces/line/180/line_1_180.png")
+@onready var line_2_180 : Texture2D = load("res://assets/pieces/line/180/line_2_180.png")
+
+## Для фигуры LINE на 270
+@onready var line_1_270 : Texture2D = load("res://assets/pieces/line/270/line_1_270.png")
+@onready var line_2_270 : Texture2D = load("res://assets/pieces/line/270/line_2_270.png")
 
 
 @onready var PIECE_TEXTURE = {
@@ -66,9 +168,39 @@ const PIECE_SCENES = {
 	"O":[O_1, O_2, O_3, O_4],
 	"T":[T_2, T_1, T_3, T_4],
 	"L":[L_1, L_2, L_3, L_4],
-	"J":[J_1, J_2, J_3, J_4],
+	"J":[J_4, J_2, J_3, J_1],
 	"S":[S_2, S_1, S_3, S_4],
 	"LINE":[line_1, line_2]
+}
+
+@onready var PIECE_TEXTURE_90 = {
+	"I":[I_1_90, I_2_90, I_3_90, I_4_90],
+	"O":[O_1, O_2, O_3, O_4],
+	"T":[T_2_90, T_1_90, T_3_90, T_4_90],
+	"L":[L_1_90, L_2_90, L_3_90, L_4_90],
+	"J":[J_4_90, J_2_90, J_3_90, J_1_90],
+	"S":[S_2_90, S_1_90, S_3_90, S_4_90],
+	"LINE":[line_1_90, line_2_90]
+}
+
+@onready var PIECE_TEXTURE_180 = {
+	"I":[I_1_180, I_2_180, I_3_180, I_4_180],
+	"O":[O_1, O_2, O_3, O_4],
+	"T":[T_2_180, T_1_180, T_3_180, T_4_180],
+	"L":[L_1_180, L_2_180, L_3_180, L_4_180],
+	"J":[J_4_180, J_2_180, J_3_180, J_1_180],
+	"S":[S_2_180, S_1_180, S_3_180, S_4_180],
+	"LINE":[line_1_180, line_2_180]
+}
+
+@onready var PIECE_TEXTURE_270 = {
+	"I":[I_1_270, I_2_270, I_3_270, I_4_270],
+	"O":[O_1, O_2, O_3, O_4],
+	"T":[T_2_270, T_1_270, T_3_270, T_4_270],
+	"L":[L_1_270, L_2_270, L_3_270, L_4_270],
+	"J":[J_4_270, J_2_270, J_3_270, J_1_270],
+	"S":[S_2_270, S_1_270, S_3_270, S_4_270],
+	"LINE":[line_1_270, line_2_270]
 }
 
 # Смещения для каждой фигуры относительно центра (0,0)
@@ -223,7 +355,7 @@ func rotate_piece():
 	update_ghost_position()
 	draw_piece()
 	draw_ghost_piece()
-
+	
 func is_valid_position(test_position = null, test_rotation = null):
 	var pos = test_position if test_position != null else current_position
 	var rot = test_rotation if test_rotation != null else current_rotation
@@ -334,7 +466,20 @@ func draw_piece():
 		
 		if grid_pos.y >= 0:
 			var block : TextureRect = TextureRect.new()
-			var base_texture = PIECE_TEXTURE[current_piece][cell_index]
+			
+			var base_texture : Texture2D = null
+			
+			match current_rotation:
+				0:
+					base_texture = PIECE_TEXTURE[current_piece][cell_index]
+				1:
+					base_texture = PIECE_TEXTURE_90[current_piece][cell_index]
+				2:
+					base_texture = PIECE_TEXTURE_180[current_piece][cell_index]
+				3:
+					base_texture = PIECE_TEXTURE_270[current_piece][cell_index]
+					
+			
 			cell_index += 1
 			block.texture = base_texture
 			block.size = Vector2(CELL_SIZE, CELL_SIZE)
