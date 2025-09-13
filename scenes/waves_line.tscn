@@ -1,0 +1,124 @@
+[gd_scene load_steps=2 format=3 uid="uid://5ejfca8wuhb0"]
+
+[ext_resource type="PackedScene" uid="uid://bfb62elgud7pd" path="res://scenes/waves_base_block.tscn" id="1_qy4vq"]
+
+[node name="WavesLine" type="Node2D"]
+
+[node name="WavesBaseBlock" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-32, 0)
+
+[node name="WavesBaseBlock2" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-64, 0)
+
+[node name="WavesBaseBlock3" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-96, 0)
+
+[node name="WavesBaseBlock4" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-128, 0)
+
+[node name="WavesBaseBlock5" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-160, 0)
+
+[node name="WavesBaseBlock6" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-192, 0)
+
+[node name="WavesBaseBlock7" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-224, 0)
+
+[node name="WavesBaseBlock8" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-256, 0)
+
+[node name="WavesBaseBlock9" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-288, 0)
+
+[node name="WavesBaseBlock10" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-320, 0)
+
+[node name="WavesBaseBlock11" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-352, 0)
+
+[node name="WavesBaseBlock12" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-384, 0)
+
+[node name="WavesBaseBlock13" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-416, 0)
+
+[node name="WavesBaseBlock14" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-448, 0)
+
+[node name="WavesBaseBlock15" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-480, 0)
+
+[node name="WavesBaseBlock16" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-512, 0)
+
+[node name="WavesBaseBlock17" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-544, 0)
+
+[node name="WavesBaseBlock18" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-576, 0)
+
+[node name="WavesBaseBlock19" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-608, 0)
+
+[node name="WavesBaseBlock20" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(-640, 0)
+
+[node name="WavesBaseBlock21" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(32, 0)
+
+[node name="WavesBaseBlock22" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(64, 0)
+
+[node name="WavesBaseBlock23" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(96, 0)
+
+[node name="WavesBaseBlock24" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(128, 0)
+
+[node name="WavesBaseBlock25" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(160, 0)
+
+[node name="WavesBaseBlock26" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(192, 0)
+
+[node name="WavesBaseBlock27" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(224, 0)
+
+[node name="WavesBaseBlock28" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(256, 0)
+
+[node name="WavesBaseBlock29" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(288, 0)
+
+[node name="WavesBaseBlock30" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(320, 0)
+
+[node name="WavesBaseBlock31" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(352, 0)
+
+[node name="WavesBaseBlock32" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(384, 0)
+
+[node name="WavesBaseBlock33" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(416, 0)
+
+[node name="WavesBaseBlock34" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(448, 0)
+
+[node name="WavesBaseBlock35" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(480, 0)
+
+[node name="WavesBaseBlock36" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(512, 0)
+
+[node name="WavesBaseBlock37" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(544, 0)
+
+[node name="WavesBaseBlock38" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(576, 0)
+
+[node name="WavesBaseBlock39" parent="." instance=ExtResource("1_qy4vq")]
+position = Vector2(608, 0)
+
+[node name="WavesBaseBlock40" parent="." instance=ExtResource("1_qy4vq")]
