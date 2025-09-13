@@ -514,14 +514,18 @@ func get_piece_color(piece_type):
 func fix_piece():
 	var piece_cells = get_current_cells()
 	
-	var index_cell = 0
+	var index_piece = 0
 	for cell in piece_cells:
 		var grid_pos = current_position + cell
 		
-		index_cell += 1
-		
 		if grid_pos.y >= 0:
-			grid[grid_pos.y][grid_pos.x] = current_piece
+#			grid[grid_pos.y][grid_pos.x] = current_piece
+			grid[grid_pos.y][grid_pos.x] = {
+				'figure_type': current_piece,
+				'rotate_index': current_rotation,
+				'index_piece': index_piece
+			}
+			index_piece += 1
 	create_fixed_piece_visual()
 
 func create_fixed_piece_visual():
@@ -622,9 +626,19 @@ func update_visual_grid():
 	for y in range(GRID_HEIGHT):
 		for x in range(GRID_WIDTH):
 			if grid[y][x] != null:
-				var color = get_piece_color(grid[y][x])
+#				var color = get_piece_color(grid[y][x])
 				var block : BaseFigurePiece = BaseFigurePiece.new()
-				var base_texture = load("res://assets/pieces/I/I_1.png")
+				var base_texture : Texture2D = null
+				match grid[y][x]['rotate_index']:
+					0:
+						base_texture = PIECE_TEXTURE[grid[y][x]['figure_type']][grid[y][x]['index_piece']]
+					1:
+						base_texture = PIECE_TEXTURE_90[grid[y][x]['figure_type']][grid[y][x]['index_piece']]
+					2:
+						base_texture = PIECE_TEXTURE_180[grid[y][x]['figure_type']][grid[y][x]['index_piece']]
+					3:
+						base_texture = PIECE_TEXTURE_270[grid[y][x]['figure_type']][grid[y][x]['index_piece']]
+				
 				block.texture = base_texture
 				block.size = Vector2(CELL_SIZE, CELL_SIZE)
 				block.position = Vector2(x * CELL_SIZE, y * CELL_SIZE)
