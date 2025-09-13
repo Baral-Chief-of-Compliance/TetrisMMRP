@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbsmbv3mndxfa"]
+
+[ext_resource type="Script" path="res://scripts/base_figure_piece.gd" id="1_jp78b"]
+
+[node name="BaseFigurePiece" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jp78b")

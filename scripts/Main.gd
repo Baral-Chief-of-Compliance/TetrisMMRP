@@ -465,7 +465,7 @@ func draw_piece():
 		var grid_pos = current_position + cell
 		
 		if grid_pos.y >= 0:
-			var block : TextureRect = TextureRect.new()
+			var block : BaseFigurePiece = BaseFigurePiece.new()
 			
 			var base_texture : Texture2D = null
 			
@@ -514,12 +514,14 @@ func get_piece_color(piece_type):
 func fix_piece():
 	var piece_cells = get_current_cells()
 	
+	var index_cell = 0
 	for cell in piece_cells:
 		var grid_pos = current_position + cell
 		
+		index_cell += 1
+		
 		if grid_pos.y >= 0:
 			grid[grid_pos.y][grid_pos.x] = current_piece
-	
 	create_fixed_piece_visual()
 
 func create_fixed_piece_visual():
@@ -528,14 +530,31 @@ func create_fixed_piece_visual():
 	var color = get_piece_color(current_piece)
 	
 	var cell_index : int = 0
+	
 	for cell in piece_cells:
 		var grid_pos = current_position + cell
 		
+		
 		if grid_pos.y >= 0:
-			var block : TextureRect = TextureRect.new()
-			var base_texture = PIECE_TEXTURE[current_piece][cell_index]
+			var block : BaseFigurePiece = BaseFigurePiece.new()
+			block.figure_type = current_piece
+			block.rotate_index = current_rotation
+			block.index_piece = cell_index
+			
+			var base_texture : Texture2D = null
+			match current_rotation:
+				0:
+					base_texture = PIECE_TEXTURE[current_piece][cell_index]
+				1:
+					base_texture = PIECE_TEXTURE_90[current_piece][cell_index]
+				2:
+					base_texture = PIECE_TEXTURE_180[current_piece][cell_index]
+				3:
+					base_texture = PIECE_TEXTURE_270[current_piece][cell_index]
+					
 			cell_index += 1
 			block.texture = base_texture
+			
 			block.size = Vector2(CELL_SIZE, CELL_SIZE)
 			block.position = Vector2(grid_pos.x * CELL_SIZE, grid_pos.y * CELL_SIZE)
 #			block.color = color
@@ -604,7 +623,7 @@ func update_visual_grid():
 		for x in range(GRID_WIDTH):
 			if grid[y][x] != null:
 				var color = get_piece_color(grid[y][x])
-				var block : TextureRect = TextureRect.new()
+				var block : BaseFigurePiece = BaseFigurePiece.new()
 				var base_texture = load("res://assets/pieces/I/I_1.png")
 				block.texture = base_texture
 				block.size = Vector2(CELL_SIZE, CELL_SIZE)
@@ -661,7 +680,7 @@ func update_next_piece_display():
 	
 	var cell_index : int = 0
 	for cell in next_cells:
-		var block : TextureRect = TextureRect.new()
+		var block : BaseFigurePiece = BaseFigurePiece.new()
 		var base_texture = PIECE_TEXTURE[next_piece][cell_index]
 		cell_index += 1
 		block.texture = base_texture
