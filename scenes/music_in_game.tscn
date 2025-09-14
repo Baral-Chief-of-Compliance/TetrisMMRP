@@ -1,0 +1,15 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkawnmbt716yr"]
+
+[ext_resource type="Script" path="res://scripts/music_in_game.gd" id="1_xvxmp"]
+[ext_resource type="AudioStream" uid="uid://b80bdb55m3syy" path="res://assets/music/GameSound_1.mp3" id="2_u4l1b"]
+[ext_resource type="AudioStream" uid="uid://dpn5bbhaf1etg" path="res://assets/music/GameSound_2.mp3" id="3_7o28l"]
+[ext_resource type="AudioStream" uid="uid://bxlewomf8okx3" path="res://assets/music/GameSound_3.mp3" id="4_msghy"]
+[ext_resource type="AudioStream" uid="uid://dctfkjcyck7qr" path="res://assets/music/GameSound_4.mp3" id="5_d05yf"]
+[ext_resource type="AudioStream" uid="uid://csbbjcfxmj06a" path="res://assets/music/GameSound_5.mp3" id="6_vqol3"]
+
+[node name="MusicINGame" type="AudioStreamPlayer2D"]
+bus = &"Music"
+script = ExtResource("1_xvxmp")
+tracks = Array[AudioStreamMP3]([ExtResource("2_u4l1b"), ExtResource("3_7o28l"), ExtResource("4_msghy"), ExtResource("5_d05yf"), ExtResource("6_vqol3")])
+
+[connection signal="finished" from="." to="." method="_on_finished"]
