@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=3 uid="uid://cbdrgaivh4wje"]
+
+[ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="1_y3gqm"]
+[ext_resource type="PackedScene" uid="uid://cgsjgpmlj3b4c" path="res://scenes/red_containers_fall.tscn" id="3_8a4p1"]
+[ext_resource type="Texture2D" uid="uid://dquxs8vqcpdmn" path="res://assets/GameLogo/NewLogoOneColor.png" id="4_684yn"]
+[ext_resource type="PackedScene" uid="uid://dt5mo5pjokxvi" path="res://scenes/blu_containers_fall.tscn" id="4_l4dge"]
+[ext_resource type="Texture2D" uid="uid://dsqd4kb6lpy2p" path="res://assets/Btns/PlayBtnNormal.png" id="5_78s3j"]
+[ext_resource type="Texture2D" uid="uid://bci1w83obj6sn" path="res://assets/Btns/PlayBtnPressed.png" id="6_31pik"]
+[ext_resource type="Texture2D" uid="uid://db7wvayib6diu" path="res://assets/Btns/MMRPBtnNormal.png" id="7_26s6e"]
+[ext_resource type="Texture2D" uid="uid://clrxnddyfwmg4" path="res://assets/Btns/MMRPBtnPressed.png" id="8_05qcw"]
+[ext_resource type="Texture2D" uid="uid://dtvj0ahlvyumn" path="res://assets/Btns/SettingsBtnNormal.png" id="9_c03jw"]
+[ext_resource type="Texture2D" uid="uid://dnyaf8hbbqu18" path="res://assets/Btns/ExitBtnNormal.png" id="10_plo1a"]
+[ext_resource type="Texture2D" uid="uid://3cfrwnlukhbe" path="res://assets/Btns/ExitBtnPressed.png" id="11_tqbi8"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y3gqm")
+
+[node name="RedContainersFall" parent="MainMenu" instance=ExtResource("3_8a4p1")]
+position = Vector2(151, -215)
+
+[node name="BluContainersFall" parent="MainMenu" instance=ExtResource("4_l4dge")]
+position = Vector2(448, -190)
+
+[node name="RedContainersFall2" parent="MainMenu" instance=ExtResource("3_8a4p1")]
+position = Vector2(714, -180)
+
+[node name="BluContainersFall2" parent="MainMenu" instance=ExtResource("4_l4dge")]
+position = Vector2(961, -190)
+
+[node name="MenuPunkts" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.5
+offset_top = -141.5
+offset_right = 141.5
+offset_bottom = 141.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameLogo" type="TextureRect" parent="MainMenu/MenuPunkts"]
+layout_mode = 2
+texture = ExtResource("4_684yn")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/MenuPunkts"]
+layout_mode = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="PlayBtn" type="TextureButton" parent="MainMenu/MenuPunkts"]
+layout_mode = 2
+texture_normal = ExtResource("5_78s3j")
+texture_pressed = ExtResource("6_31pik")
+texture_hover = ExtResource("6_31pik")
+texture_focused = ExtResource("6_31pik")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenu/MenuPunkts"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="MMRPBtn" type="TextureButton" parent="MainMenu/MenuPunkts"]
+layout_mode = 2
+texture_normal = ExtResource("7_26s6e")
+texture_pressed = ExtResource("8_05qcw")
+texture_hover = ExtResource("8_05qcw")
+texture_focused = ExtResource("8_05qcw")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainMenu/MenuPunkts"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="SettingsBtn" type="TextureButton" parent="MainMenu/MenuPunkts"]
+layout_mode = 2
+texture_normal = ExtResource("9_c03jw")
+
+[node name="MarginContainer4" type="MarginContainer" parent="MainMenu/MenuPunkts"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ExitBtn" type="TextureButton" parent="MainMenu/MenuPunkts"]
+layout_mode = 2
+texture_normal = ExtResource("10_plo1a")
+texture_pressed = ExtResource("11_tqbi8")
+texture_hover = ExtResource("11_tqbi8")
+texture_focused = ExtResource("11_tqbi8")

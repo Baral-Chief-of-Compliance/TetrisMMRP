@@ -12,4 +12,4 @@ spread = 180.0
 gravity = Vector2(0, 98)
 initial_velocity_min = 100.0
 initial_velocity_max = 100.0
-scale_amount_min = 0.5
+scale_amount_max = 1.5

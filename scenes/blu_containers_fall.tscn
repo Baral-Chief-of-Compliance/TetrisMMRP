@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt5mo5pjokxvi"]
+
+[ext_resource type="Material" uid="uid://b6kih35a5dla5" path="res://scenes/red_containers_fall.tres" id="1_skk4a"]
+[ext_resource type="Texture2D" uid="uid://dwu1jgxb8re0b" path="res://assets/pieces/line/blue-container.png" id="2_pebyc"]
+
+[node name="BluContainersFall" type="GPUParticles2D"]
+sub_emitter = NodePath(".")
+process_material = ExtResource("1_skk4a")
+texture = ExtResource("2_pebyc")
+lifetime = 8.0
+visibility_rect = Rect2(-100, -100, 200, 2000)

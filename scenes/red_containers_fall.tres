@@ -1,0 +1,17 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://b6kih35a5dla5"]
+
+[sub_resource type="Curve" id="Curve_e84cw"]
+bake_resolution = 1
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.196364, 0), 0.0, 0.0, 0, 0, Vector2(0.196374, 0.536842), 0.0, 0.0, 0, 0, Vector2(0.389091, 0.515789), 0.0, 0.0, 0, 0, Vector2(0.501818, 1), 0.0, 0.0, 0, 0, Vector2(0.509091, 0.494737), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_iaqjc"]
+curve = SubResource("Curve_e84cw")
+
+[resource]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_iaqjc")
