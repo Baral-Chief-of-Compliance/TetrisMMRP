@@ -13,9 +13,6 @@ var pause_block : VBoxContainer
 ##Блок настроек
 var settings_block : VBoxContainer
 
-@export
-##Сцена главного меню
-var main_menu : PackedScene = preload("res://scenes/MainMenu.tscn")
 
 @export
 ## Аниматор для блюра
@@ -28,7 +25,6 @@ var blur_anim_name : String = 'show_blur'
 @export
 ## Наименование анимации для исчезновения блюра
 var not_blur_anim_name : String = 'not_blur'
-
 
 ## Нажать на паузу
 func _on_pause_btn_button_down():
@@ -52,8 +48,9 @@ func _on_settings_btn_button_down():
 
 ## Кнопка домой
 func _on_home_btn_button_down():
+	animation_player.play(not_blur_anim_name)	
 	get_tree().paused = false
-	get_tree().change_scene_to_packed(main_menu)
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 ## Кнопка обратно в меню паузы
 func _on_back_btn_button_down():

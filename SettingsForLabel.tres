@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cr45oyx4tfw17"]
+
+[ext_resource type="FontFile" uid="uid://cu7ji2y23xvwi" path="res://assets/fonts/Yazo.ttf" id="1_yhabg"]
+
+[resource]
+font = ExtResource("1_yhabg")
+font_size = 100
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)

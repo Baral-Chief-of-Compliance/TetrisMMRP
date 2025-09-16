@@ -18,9 +18,6 @@ const PIECE_SCENES = {
 }
 
 
-
-## AudioStreamPlayer
-
 ## Для взрыва блоков
 @onready var expose_stream_player : AudioStreamPlayer2D = $SucessExplose
 
@@ -256,11 +253,19 @@ var current_drop_speed = BASE_DROP_SPEED
 var explosion_particles_scene = preload("res://scenes/ExplosionParticles.tscn")
 var ghost_position = Vector2i()
 
+# Мобильные элементы управления
+var fast_fall = false
+var touch_start_pos = Vector2()
+var touch_start_time = 0
+var is_tap = false
+var swipe_threshold = 20
+var tap_time_threshold = 0.2
+
 # Ссылки на узлы
 @onready var timer = $Timer
-@onready var score_label = $UI/ScoreLabel
-@onready var level_label = $UI/LevelLabel
-@onready var speed_label = $UI/SpeedLabel
+@export var gameInterface : CanvasLayer = null
+#@onready var level_label = $UI/LevelLabel
+#@onready var speed_label = $UI/SpeedLabel
 @onready var game_over_label = $UI/GameOverLabel
 @onready var pieces_node = $GameBoard/Pieces
 @onready var next_piece_display = $NextPieceDisplay
@@ -699,9 +704,10 @@ func update_score(lines_cleared_count):
 		update_ui()
 
 func update_ui():
-	score_label.text = "Score: " + str(score)
-	level_label.text = "Level: " + str(level)
-	speed_label.text = "Speed: " + str(1.0 / current_drop_speed).pad_decimals(1) + " blocks/sec"
+	gameInterface.update_points(score)
+#	score_label.text = str(score)
+#	level_label.text = "Level: " + str(level)
+#	speed_label.text = "Speed: " + str(1.0 / current_drop_speed).pad_decimals(1) + " blocks/sec"
 
 func update_next_piece_display():
 	for child in next_piece_display.get_children():
@@ -722,32 +728,87 @@ func update_next_piece_display():
 #		block.color = color
 		next_piece_display.add_child(block)
 
+
 func _input(event):
-	if game_over:
-		if event.is_action_pressed("ui_accept"):
-			start_new_game()
+			
+#	новый контент для мобилок с дипсика
+	if event is InputEventScreenTouch:
+		handle_touch_event(event)
+	elif event is InputEventScreenDrag:
+		handle_drag_event(event)		
+#	конец нового конетнта с дипсика	
+	
+#	блок клавой
+#	if game_over:
+#		if event.is_action_pressed("ui_accept"):
+#			start_new_game()
+#		return
+#
+#	if event.is_action_pressed("ui_left"):
+#		move_piece(Vector2i(-1, 0))
+#
+#	elif event.is_action_pressed("ui_right"):
+#		move_piece(Vector2i(1, 0))
+#
+#	elif event.is_action_pressed("ui_down"):
+#		if move_piece(Vector2i(0, 1)):
+#			drop_timer = 0.0
+#
+#	elif event.is_action_pressed("ui_up"):
+#		rotate_piece()
+#
+#	elif event.is_action_pressed("ui_select"): # Пробел
+#		# Hard drop - мгновенное падение
+#		current_position = ghost_position
+#
+#		## Падение блока в низ
+#		fall_stream_player.play()
+#		move_piece(Vector2i(0, 1))
+#		конец блока с клавой
+		
+#Обработка прикосновений
+func handle_touch_event(event):
+	if event.pressed:
+		# Начало касания
+		touch_start_pos = event.position
+		touch_start_time = Time.get_ticks_msec()
+		is_tap = true
+	else:
+		# Конец касания - проверяем был ли это тап
+		var touch_duration = Time.get_ticks_msec() - touch_start_time
+		var touch_distance = event.position.distance_to(touch_start_pos)
+		
+		if is_tap and touch_duration < tap_time_threshold * 1000 and touch_distance < swipe_threshold:
+			rotate_piece()  # Одиночное нажатие - поворот
+		is_tap = false
+
+#обработка свайпов
+func handle_drag_event(event):
+	if not is_tap:
 		return
+	var drag_distance = event.position - touch_start_pos
 	
-	if event.is_action_pressed("ui_left"):
-		move_piece(Vector2i(-1, 0))
+	# Горизонтальное перемещение
+	if abs(drag_distance.x) > swipe_threshold * 2:
+		if drag_distance.x > 0:
+			move_piece(Vector2i(1, 0))  # Вправо
+		else:
+			move_piece(Vector2i(-1, 0))  # Влево
+		touch_start_pos = event.position  # Сбрасываем начальную позицию
 	
-	elif event.is_action_pressed("ui_right"):
-		move_piece(Vector2i(1, 0))
-	
-	elif event.is_action_pressed("ui_down"):
-		if move_piece(Vector2i(0, 1)):
-			drop_timer = 0.0
-	
-	elif event.is_action_pressed("ui_up"):
-		rotate_piece()
-	
-	elif event.is_action_pressed("ui_select"): # Пробел
+	# Быстрое падение (свайп вниз)
+	if drag_distance.y > swipe_threshold * 4:
+		fast_fall = true
+		touch_start_pos = event.position
+
+#		мгновенное падение
 		# Hard drop - мгновенное падение
 		current_position = ghost_position
-		
 		## Падение блока в низ
 		fall_stream_player.play()
 		move_piece(Vector2i(0, 1))
+#		конец мгновенного падения
+		is_tap = false  # Прекращаем считать это тапом
 
 func _process(delta):
 	if game_over:
