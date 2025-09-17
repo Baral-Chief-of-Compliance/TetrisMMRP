@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdxrvdedkcdfu"]
+[gd_scene load_steps=16 format=3 uid="uid://cdxrvdedkcdfu"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_gy42u"]
 [ext_resource type="Texture2D" uid="uid://chuy2t0jlq432" path="res://assets/cells_back.png" id="2_1lpjx"]
@@ -6,14 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="2_gq0yc"]
 [ext_resource type="PackedScene" uid="uid://5ejfca8wuhb0" path="res://scenes/waves_line.tscn" id="3_gukrb"]
 [ext_resource type="Texture2D" uid="uid://xe16dsuid175" path="res://assets/FrontSkeyForParalax.png" id="4_dhp0v"]
-[ext_resource type="Texture2D" uid="uid://c0tj8e5yk3dye" path="res://assets/BackCloudsForParalax.png" id="4_poe2v"]
+[ext_resource type="Texture2D" uid="uid://chjx4ogb76xkx" path="res://assets/BackCloudsForParalax.png" id="4_poe2v"]
 [ext_resource type="AudioStream" uid="uid://cr2cqgos333qo" path="res://assets/sounds/ocean_volumes.mp3" id="5_dweds"]
 [ext_resource type="AudioStream" uid="uid://dd8ml6bcvisdr" path="res://assets/sounds/repair_volumes.mp3" id="6_li21v"]
 [ext_resource type="AudioStream" uid="uid://bgpw1s561487u" path="res://assets/sounds/fall_sound.mp3" id="8_l58yl"]
-[ext_resource type="AudioStream" uid="uid://cc302cks3qbfo" path="res://assets/sounds/ExploseSucess.mp3" id="8_v1pca"]
 [ext_resource type="AudioStream" uid="uid://bqbi72f53ta7b" path="res://assets/sounds/tap_sound.mp3" id="9_bi0pa"]
 [ext_resource type="PackedScene" uid="uid://dkawnmbt716yr" path="res://scenes/music_in_game.tscn" id="10_gsgyl"]
 [ext_resource type="PackedScene" uid="uid://si6gmgky848r" path="res://scenes/game_interface.tscn" id="11_cgjtn"]
+[ext_resource type="AudioStream" uid="uid://cf6jihyostpns" path="res://assets/sounds/newTapSound.wav" id="12_5840j"]
+[ext_resource type="Texture2D" uid="uid://ib2b34oj0th2" path="res://assets/berth.png" id="15_sd1jh"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("gameInterface")]
 script = ExtResource("1_gy42u")
@@ -145,9 +146,6 @@ position = Vector2(100, 100)
 
 [node name="Pieces" type="Node2D" parent="GameBoard"]
 
-[node name="NextPieceDisplay" type="Node2D" parent="."]
-position = Vector2(800, 100)
-
 [node name="ParticlesContainer" type="Node2D" parent="."]
 
 [node name="UI" type="Control" parent="."]
@@ -250,9 +248,16 @@ stream = ExtResource("8_l58yl")
 bus = &"Volumes"
 
 [node name="TapVolumes" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_v1pca")
+stream = ExtResource("12_5840j")
 bus = &"Volumes"
 
 [node name="MusicINGame" parent="." instance=ExtResource("10_gsgyl")]
 
 [node name="GameInterface" parent="." instance=ExtResource("11_cgjtn")]
+
+[node name="Berth" type="Sprite2D" parent="."]
+position = Vector2(553, 1411)
+texture = ExtResource("15_sd1jh")
+
+[node name="NextPieceDisplay" type="Node2D" parent="."]
+position = Vector2(733, 681)
