@@ -1,8 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdxrvdedkcdfu"]
+[gd_scene load_steps=15 format=3 uid="uid://cdxrvdedkcdfu"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_gy42u"]
 [ext_resource type="Texture2D" uid="uid://chuy2t0jlq432" path="res://assets/cells_back.png" id="2_1lpjx"]
+[ext_resource type="Script" path="res://scripts/ParallaxBackground.gd" id="2_aio3j"]
+[ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="2_gq0yc"]
 [ext_resource type="PackedScene" uid="uid://5ejfca8wuhb0" path="res://scenes/waves_line.tscn" id="3_gukrb"]
+[ext_resource type="Texture2D" uid="uid://xe16dsuid175" path="res://assets/FrontSkeyForParalax.png" id="4_dhp0v"]
+[ext_resource type="Texture2D" uid="uid://c0tj8e5yk3dye" path="res://assets/BackCloudsForParalax.png" id="4_poe2v"]
 [ext_resource type="AudioStream" uid="uid://cr2cqgos333qo" path="res://assets/sounds/ocean_volumes.mp3" id="5_dweds"]
 [ext_resource type="AudioStream" uid="uid://dd8ml6bcvisdr" path="res://assets/sounds/repair_volumes.mp3" id="6_li21v"]
 [ext_resource type="AudioStream" uid="uid://bgpw1s561487u" path="res://assets/sounds/fall_sound.mp3" id="8_l58yl"]
@@ -15,9 +19,36 @@
 script = ExtResource("1_gy42u")
 gameInterface = NodePath("GameInterface")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_aio3j")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(12, -301)
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-10, -4)
+texture = ExtResource("2_gq0yc")
+centered = false
+
+[node name="BackClouds" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BackClouds"]
+position = Vector2(0, -427)
+texture = ExtResource("4_poe2v")
+centered = false
+
+[node name="NearestClouds" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/NearestClouds"]
+position = Vector2(-30, -307)
+texture = ExtResource("4_dhp0v")
+centered = false
+
 [node name="SeperBackWaves" type="Node2D" parent="."]
 modulate = Color(0, 1, 1, 0.662745)
-position = Vector2(460, 1056)
+position = Vector2(543, 1056)
 
 [node name="WavesLine" parent="SeperBackWaves" instance=ExtResource("3_gukrb")]
 

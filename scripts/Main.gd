@@ -271,6 +271,8 @@ var tap_time_threshold = 0.2
 @onready var next_piece_display = $NextPieceDisplay
 @onready var particles_container = $ParticlesContainer
 
+
+
 func _ready():
 	initialize_grid()
 	start_new_game()
