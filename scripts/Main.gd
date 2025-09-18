@@ -264,6 +264,9 @@ var tap_time_threshold = 0.2
 # Ссылки на узлы
 @onready var timer = $Timer
 @export var gameInterface : CanvasLayer = null
+@export var loseMenu : CanvasLayer = null
+@onready var game_over_score = $GameLose/Control/VBoxContainer/HBoxContainer/score
+
 #@onready var level_label = $UI/LevelLabel
 #@onready var speed_label = $UI/SpeedLabel
 @onready var game_over_label = $UI/GameOverLabel
@@ -310,7 +313,10 @@ func start_new_game():
 	drop_timer = 0.0
 	
 	update_ui()
-	game_over_label.visible = false
+#	game_over_label.visible = false
+	loseMenu.visible = false
+	gameInterface.visible = true
+	
 	timer.stop()
 	
 	# Создание первой и следующей фигур
@@ -331,7 +337,10 @@ func spawn_new_piece():
 	
 	if !is_valid_position():
 		game_over = true
-		game_over_label.visible = true
+#		game_over_label.visible = true
+		gameInterface.visible = false
+		game_over_score.text = str(score)
+		loseMenu.visible = true
 		return
 	
 	draw_piece()
@@ -699,11 +708,11 @@ func update_score(lines_cleared_count):
 	lines_cleared += lines_cleared_count
 	
 	# Повышаем уровень каждые 5 линий
-	var new_level = lines_cleared / 5 + 1
-	if new_level > level:
-		level = new_level
-		current_drop_speed = max(0.1, BASE_DROP_SPEED - (level - 1) * 0.1)
-		update_ui()
+#	var new_level = lines_cleared / 5 + 1
+#	if new_level > level:
+#		level = new_level
+#		current_drop_speed = max(0.1, BASE_DROP_SPEED - (level - 1) * 0.1)
+	update_ui()
 
 func update_ui():
 	gameInterface.update_points(score)
@@ -822,3 +831,11 @@ func _process(delta):
 	if drop_timer >= current_drop_speed:
 		move_piece(Vector2i(0, 1))
 		drop_timer = 0.0
+
+#перезапуск игры
+func _on_reload_btn_button_down():
+	start_new_game()
+
+#Выход в меню
+func _on_home_btn_button_down():
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")

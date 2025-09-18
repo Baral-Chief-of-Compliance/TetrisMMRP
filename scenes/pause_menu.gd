@@ -26,6 +26,10 @@ var blur_anim_name : String = 'show_blur'
 ## Наименование анимации для исчезновения блюра
 var not_blur_anim_name : String = 'not_blur'
 
+@export
+## Наименование анимации для выходна в главное меню
+var exit_game_anim : String = 'exit_game'
+
 ## Нажать на паузу
 func _on_pause_btn_button_down():
 	animation_player.play(blur_anim_name)	
@@ -48,7 +52,10 @@ func _on_settings_btn_button_down():
 
 ## Кнопка домой
 func _on_home_btn_button_down():
-	animation_player.play(not_blur_anim_name)	
+	animation_player.play(exit_game_anim)
+	
+## Кнопка выхода их игры
+func exitGame():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 

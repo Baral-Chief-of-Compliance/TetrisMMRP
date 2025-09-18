@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdxrvdedkcdfu"]
+[gd_scene load_steps=26 format=3 uid="uid://cdxrvdedkcdfu"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_gy42u"]
 [ext_resource type="Texture2D" uid="uid://chuy2t0jlq432" path="res://assets/cells_back.png" id="2_1lpjx"]
@@ -9,16 +9,35 @@
 [ext_resource type="Texture2D" uid="uid://chjx4ogb76xkx" path="res://assets/BackCloudsForParalax.png" id="4_poe2v"]
 [ext_resource type="AudioStream" uid="uid://cr2cqgos333qo" path="res://assets/sounds/ocean_volumes.mp3" id="5_dweds"]
 [ext_resource type="AudioStream" uid="uid://dd8ml6bcvisdr" path="res://assets/sounds/repair_volumes.mp3" id="6_li21v"]
+[ext_resource type="Texture2D" uid="uid://dxgnqbhq27uwj" path="res://assets/ship.png" id="7_fldeb"]
 [ext_resource type="AudioStream" uid="uid://bgpw1s561487u" path="res://assets/sounds/fall_sound.mp3" id="8_l58yl"]
 [ext_resource type="AudioStream" uid="uid://bqbi72f53ta7b" path="res://assets/sounds/tap_sound.mp3" id="9_bi0pa"]
 [ext_resource type="PackedScene" uid="uid://dkawnmbt716yr" path="res://scenes/music_in_game.tscn" id="10_gsgyl"]
 [ext_resource type="PackedScene" uid="uid://si6gmgky848r" path="res://scenes/game_interface.tscn" id="11_cgjtn"]
 [ext_resource type="AudioStream" uid="uid://cf6jihyostpns" path="res://assets/sounds/newTapSound.wav" id="12_5840j"]
 [ext_resource type="Texture2D" uid="uid://ib2b34oj0th2" path="res://assets/berth.png" id="15_sd1jh"]
+[ext_resource type="LabelSettings" uid="uid://cr45oyx4tfw17" path="res://SettingsForLabel.tres" id="17_4y0im"]
+[ext_resource type="Shader" path="res://scenes/pause_menu.gdshader" id="17_jq0q3"]
+[ext_resource type="FontFile" uid="uid://cu7ji2y23xvwi" path="res://assets/fonts/Yazo.ttf" id="18_44g2y"]
+[ext_resource type="Texture2D" uid="uid://i1uai8bad774" path="res://assets/Btns/ReplayBtn.png" id="18_im7sl"]
+[ext_resource type="Texture2D" uid="uid://depv2bseigv6b" path="res://assets/Btns/ReplayBtnPressed.png" id="19_7q6iq"]
+[ext_resource type="Texture2D" uid="uid://bs38sni40ixvt" path="res://assets/Btns/HomeBtnNormal.png" id="20_fok0h"]
+[ext_resource type="Texture2D" uid="uid://c6ngi1ni8brnx" path="res://assets/Btns/HomeBtnPressed.png" id="21_3suhx"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("gameInterface")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rghh8"]
+shader = ExtResource("17_jq0q3")
+shader_parameter/lod = 0.8
+
+[sub_resource type="LabelSettings" id="LabelSettings_gq0ct"]
+font = ExtResource("18_44g2y")
+font_size = 120
+font_color = Color(0.270588, 0.517647, 0.752941, 1)
+outline_size = 10
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("gameInterface", "loseMenu")]
 script = ExtResource("1_gy42u")
 gameInterface = NodePath("GameInterface")
+loseMenu = NodePath("GameLose")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_aio3j")
@@ -126,11 +145,17 @@ position = Vector2(0, 200)
 [node name="WavesLine12" parent="BackWaves" instance=ExtResource("3_gukrb")]
 position = Vector2(16, 220)
 
+[node name="Ship" type="Sprite2D" parent="."]
+position = Vector2(420, 677)
+texture = ExtResource("7_fldeb")
+
 [node name="Back" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(420, 741)
 texture = ExtResource("2_1lpjx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(300, 600)
 offset_left = 100.0
 offset_top = 100.0
@@ -176,6 +201,7 @@ offset_right = 801.0
 offset_bottom = 563.0
 
 [node name="GameOverLabel" type="Label" parent="UI"]
+visible = false
 layout_mode = 0
 offset_left = 320.0
 offset_top = 640.0
@@ -191,7 +217,7 @@ offset = Vector2(2.63, 0)
 
 [node name="WavesFront" type="Node2D" parent="."]
 modulate = Color(0, 1, 1, 1)
-position = Vector2(429, 1399)
+position = Vector2(429, 1554)
 scale = Vector2(2, 2)
 
 [node name="WavesLine" parent="WavesFront" instance=ExtResource("3_gukrb")]
@@ -261,3 +287,99 @@ texture = ExtResource("15_sd1jh")
 
 [node name="NextPieceDisplay" type="Node2D" parent="."]
 position = Vector2(733, 681)
+
+[node name="GameLose" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameLose"]
+material = SubResource("ShaderMaterial_rghh8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="GameLose"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameLose/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -263.0
+offset_right = 200.0
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameLose/Control/VBoxContainer"]
+layout_mode = 2
+text = "ВАШ РЕЗУЛЬТАТ"
+label_settings = SubResource("LabelSettings_gq0ct")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="GameLose/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameLose/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="score" type="Label" parent="GameLose/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+label_settings = ExtResource("17_4y0im")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameLose/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="teo" type="Label" parent="GameLose/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "TEO"
+label_settings = ExtResource("17_4y0im")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameLose/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="ReloadBtn" type="TextureButton" parent="GameLose/Control/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("18_im7sl")
+texture_pressed = ExtResource("19_7q6iq")
+texture_hover = ExtResource("19_7q6iq")
+texture_focused = ExtResource("19_7q6iq")
+
+[node name="MarginContainer2" type="MarginContainer" parent="GameLose/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HomeBtn" type="TextureButton" parent="GameLose/Control/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("20_fok0h")
+texture_pressed = ExtResource("21_3suhx")
+texture_hover = ExtResource("21_3suhx")
+texture_focused = ExtResource("21_3suhx")
+
+[connection signal="button_down" from="GameLose/Control/VBoxContainer/ReloadBtn" to="." method="_on_reload_btn_button_down"]
+[connection signal="button_down" from="GameLose/Control/VBoxContainer/HomeBtn" to="." method="_on_home_btn_button_down"]
