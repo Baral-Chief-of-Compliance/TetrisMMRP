@@ -382,7 +382,7 @@ texture_hover = ExtResource("21_3suhx")
 texture_focused = ExtResource("21_3suhx")
 
 [node name="UpDownSpeed" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 30.0
 autostart = true
 
 [connection signal="button_down" from="GameLose/Control/VBoxContainer/ReloadBtn" to="." method="_on_reload_btn_button_down"]
