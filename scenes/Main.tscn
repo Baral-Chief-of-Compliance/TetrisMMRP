@@ -286,7 +286,7 @@ position = Vector2(553, 1411)
 texture = ExtResource("15_sd1jh")
 
 [node name="NextPieceDisplay" type="Node2D" parent="."]
-position = Vector2(733, 681)
+position = Vector2(733, 658)
 
 [node name="GameLose" type="CanvasLayer" parent="."]
 visible = false
@@ -381,5 +381,10 @@ texture_pressed = ExtResource("21_3suhx")
 texture_hover = ExtResource("21_3suhx")
 texture_focused = ExtResource("21_3suhx")
 
+[node name="UpDownSpeed" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [connection signal="button_down" from="GameLose/Control/VBoxContainer/ReloadBtn" to="." method="_on_reload_btn_button_down"]
 [connection signal="button_down" from="GameLose/Control/VBoxContainer/HomeBtn" to="." method="_on_home_btn_button_down"]
+[connection signal="timeout" from="UpDownSpeed" to="." method="_on_up_down_speed_timeout"]
