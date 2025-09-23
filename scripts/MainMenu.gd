@@ -10,7 +10,7 @@ var settings_menu : VBoxContainer
 
 @export
 ## Сцена с игрой
-var game_menu_packed_scene : PackedScene = preload('res://scenes/Main.tscn')
+var game_guid_packed_scene : PackedScene = preload('res://scenes/guid_for_game.tscn')
 
 
 @export
@@ -47,4 +47,4 @@ func _on_settings_btn_button_down():
 
 ## Переход на с цену игры
 func _on_play_btn_button_down():
-	get_tree().change_scene_to_packed(game_menu_packed_scene)
+	get_tree().change_scene_to_packed(game_guid_packed_scene)
