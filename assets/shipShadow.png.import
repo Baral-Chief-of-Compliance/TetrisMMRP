@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpogcebnsotrr"
-path="res://.godot/imported/FrontSkeyForParalax.png-110f8c6d7fe939f9c0cd312eacff228d.ctex"
+uid="uid://dnr154flixl1f"
+path="res://.godot/imported/shipShadow.png-6de1d253a06d30e6a9bc38f5b4e27d35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/FrontSkeyForParalax.png"
-dest_files=["res://.godot/imported/FrontSkeyForParalax.png-110f8c6d7fe939f9c0cd312eacff228d.ctex"]
+source_file="res://assets/shipShadow.png"
+dest_files=["res://.godot/imported/shipShadow.png-6de1d253a06d30e6a9bc38f5b4e27d35.ctex"]
 
 [params]
 

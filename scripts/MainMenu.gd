@@ -14,6 +14,11 @@ var game_guid_packed_scene : PackedScene = preload('res://scenes/guid_for_game.t
 
 
 @export
+## Music
+var music_player : AudioStreamPlayer = null
+
+
+@export
 ## ссылка на сайт ММРП
 var site_mmrp : String = 'https://mmrp.ru/'
 
@@ -21,6 +26,7 @@ var site_mmrp : String = 'https://mmrp.ru/'
 
 ## Выход из игры
 func _on_exit_btn_button_down():
+	music_player.stop()
 	if os_name == 'Android':
 		get_tree().quit(true)
 	else:
@@ -47,4 +53,5 @@ func _on_settings_btn_button_down():
 
 ## Переход на с цену игры
 func _on_play_btn_button_down():
+	music_player.stop()	
 	get_tree().change_scene_to_packed(game_guid_packed_scene)

@@ -21,10 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://cc4m1dgp14ku7" path="res://assets/GameLogo/SoundsName.png" id="17_83q48"]
 [ext_resource type="AudioStream" uid="uid://rdastt61r01b" path="res://assets/music/MainMenu.mp3" id="17_gaupl"]
 
-[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "settings_menu")]
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "settings_menu", "music_player")]
 script = ExtResource("1_83exj")
 main_menu = NodePath("MainMenu/MenuPunkts")
 settings_menu = NodePath("MainMenu/SettingsPunkts")
+music_player = NodePath("Music")
 
 [node name="MainMenu" type="Control" parent="."]
 layout_mode = 3

@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bh3u26uj18s7s"]
+[gd_scene load_steps=16 format=3 uid="uid://bh3u26uj18s7s"]
 
+[ext_resource type="Script" path="res://scripts/guid_for_game.gd" id="1_j1dk7"]
 [ext_resource type="LabelSettings" uid="uid://cr45oyx4tfw17" path="res://SettingsForLabel.tres" id="1_tcr24"]
 [ext_resource type="Texture2D" uid="uid://b5ov3cfotwiq4" path="res://assets/guids/smartphone.png" id="2_tpl85"]
 [ext_resource type="Texture2D" uid="uid://cb4u32nqft8vu" path="res://assets/guids/playerHand.png" id="3_4upwp"]
@@ -10,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dxnycxiwcy0og" path="res://assets/guids/loader.png" id="8_dblur"]
 [ext_resource type="Texture2D" uid="uid://dsqd4kb6lpy2p" path="res://assets/Btns/PlayBtnNormal.png" id="9_bwpoq"]
 [ext_resource type="Texture2D" uid="uid://bci1w83obj6sn" path="res://assets/Btns/PlayBtnPressed.png" id="10_ofifq"]
-[ext_resource type="Script" path="res://scripts/PlayButton.gd" id="11_xjj5x"]
+[ext_resource type="AudioStream" uid="uid://bix7d4q1sro63" path="res://assets/music/music_for_guid.mp3" id="12_88sbq"]
 
 [sub_resource type="Animation" id="Animation_jqr0x"]
 resource_name = "Guid"
@@ -290,13 +291,15 @@ _data = {
 "RESET": SubResource("Animation_umgae")
 }
 
-[node name="GuidForGame" type="Control"]
+[node name="GuidForGame" type="Control" node_paths=PackedStringArray("music_audio_stream")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_j1dk7")
+music_audio_stream = NodePath("AudioStreamPlayer2D")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -458,6 +461,7 @@ expand_mode = 5
 [node name="Container90" type="TextureRect" parent="Background/VBoxContainer/TapFinger/ContainerMovment/Control"]
 visible = false
 custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
 offset_left = 221.0
 offset_top = 98.0
 offset_right = 421.0
@@ -471,6 +475,7 @@ expand_mode = 5
 [node name="Container180" type="TextureRect" parent="Background/VBoxContainer/TapFinger/ContainerMovment/Control"]
 visible = false
 custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
 offset_left = 294.0
 offset_top = 226.0
 offset_right = 494.0
@@ -484,6 +489,7 @@ expand_mode = 5
 [node name="Container270" type="TextureRect" parent="Background/VBoxContainer/TapFinger/ContainerMovment/Control"]
 visible = false
 custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
 offset_left = 171.0
 offset_top = 299.0
 offset_right = 371.0
@@ -587,7 +593,6 @@ texture_normal = ExtResource("9_bwpoq")
 texture_pressed = ExtResource("10_ofifq")
 texture_hover = ExtResource("10_ofifq")
 texture_focused = ExtResource("10_ofifq")
-script = ExtResource("11_xjj5x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Guid"
@@ -595,4 +600,8 @@ libraries = {
 "": SubResource("AnimationLibrary_wka7h")
 }
 
-[connection signal="button_down" from="Background/VBoxContainer/PlayButton" to="Background/VBoxContainer/PlayButton" method="_on_button_down"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_88sbq")
+autoplay = true
+
+[connection signal="button_down" from="Background/VBoxContainer/PlayButton" to="." method="_on_play_button_button_down"]
