@@ -845,3 +845,7 @@ func _on_home_btn_button_down():
 func _on_up_down_speed_timeout():
 	level += 1
 	current_drop_speed = max(0.1, BASE_DROP_SPEED - (level - 1) * 0.1)
+
+#Шторм в игре
+func _on_storm_timer_timeout():
+	$AnimationStorm.play("StromAnimation")

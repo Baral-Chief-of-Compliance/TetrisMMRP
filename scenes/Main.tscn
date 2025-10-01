@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://cdxrvdedkcdfu"]
+[gd_scene load_steps=33 format=3 uid="uid://cdxrvdedkcdfu"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_gy42u"]
 [ext_resource type="Texture2D" uid="uid://chuy2t0jlq432" path="res://assets/cells_back.png" id="2_1lpjx"]
 [ext_resource type="Script" path="res://scripts/ParallaxBackground.gd" id="2_aio3j"]
 [ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="2_gq0yc"]
 [ext_resource type="PackedScene" uid="uid://5ejfca8wuhb0" path="res://scenes/waves_line.tscn" id="3_gukrb"]
+[ext_resource type="Texture2D" uid="uid://c3lo60qkjr7l2" path="res://assets/storm/lightningRowaseprite.png" id="4_c0b11"]
 [ext_resource type="Texture2D" uid="uid://bpogcebnsotrr" path="res://assets/FrontSkeyForParalax.png" id="4_dhp0v"]
 [ext_resource type="Texture2D" uid="uid://chjx4ogb76xkx" path="res://assets/BackCloudsForParalax.png" id="4_poe2v"]
 [ext_resource type="AudioStream" uid="uid://cr2cqgos333qo" path="res://assets/sounds/ocean_volumes.mp3" id="5_dweds"]
@@ -24,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://depv2bseigv6b" path="res://assets/Btns/ReplayBtnPressed.png" id="19_7q6iq"]
 [ext_resource type="Texture2D" uid="uid://bs38sni40ixvt" path="res://assets/Btns/HomeBtnNormal.png" id="20_fok0h"]
 [ext_resource type="Texture2D" uid="uid://c6ngi1ni8brnx" path="res://assets/Btns/HomeBtnPressed.png" id="21_3suhx"]
+[ext_resource type="Texture2D" uid="uid://bq2s3he4okkjq" path="res://assets/storm/DockerFace.png" id="25_cr43o"]
+[ext_resource type="AudioStream" uid="uid://cupwqucplyp0l" path="res://assets/sounds/ligthning.wav" id="27_c0slt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rghh8"]
 shader = ExtResource("17_jq0q3")
@@ -34,6 +37,163 @@ font = ExtResource("18_44g2y")
 font_size = 120
 font_color = Color(0.270588, 0.517647, 0.752941, 1)
 outline_size = 10
+
+[sub_resource type="Animation" id="Animation_wnin1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ParallaxBackground/Lightning:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(787, 3000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ParallaxBackground/NearestClouds/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ParallaxBackground/BackClouds/Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ParallaxBackground/ParallaxLayer/Sprite2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../StromSound:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ds30t"]
+resource_name = "StromAnimation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ParallaxBackground/Lightning:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(787, 3000), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(787, 3000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ParallaxBackground/NearestClouds/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.45098, 0.45098, 0.45098, 1), Color(0.45098, 0.45098, 0.45098, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ParallaxBackground/BackClouds/Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.419608, 0.419608, 0.419608, 1), Color(0.419608, 0.419608, 0.419608, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ParallaxBackground/ParallaxLayer/Sprite2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.568627, 0.568627, 0.568627, 1), Color(0.568627, 0.568627, 0.568627, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../StromSound:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_stbr2"]
+_data = {
+"RESET": SubResource("Animation_wnin1"),
+"StromAnimation": SubResource("Animation_ds30t")
+}
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("gameInterface", "loseMenu")]
 script = ExtResource("1_gy42u")
@@ -51,6 +211,12 @@ motion_scale = Vector2(0, 0)
 position = Vector2(-10, -4)
 texture = ExtResource("2_gq0yc")
 centered = false
+
+[node name="Lightning" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(492, 318)
+scale = Vector2(5, 5)
+texture = ExtResource("4_c0b11")
+hframes = 11
 
 [node name="BackClouds" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.4, 0.4)
@@ -386,10 +552,29 @@ texture_pressed = ExtResource("21_3suhx")
 texture_hover = ExtResource("21_3suhx")
 texture_focused = ExtResource("21_3suhx")
 
+[node name="Docker" type="Sprite2D" parent="."]
+position = Vector2(787, 3000)
+scale = Vector2(3, 3)
+texture = ExtResource("25_cr43o")
+
 [node name="UpDownSpeed" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
 
+[node name="StormTimer" type="Timer" parent="."]
+wait_time = 90.0
+autostart = true
+
+[node name="AnimationStorm" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Docker")
+libraries = {
+"": SubResource("AnimationLibrary_stbr2")
+}
+
+[node name="StromSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_c0slt")
+
 [connection signal="button_down" from="GameLose/Control/VBoxContainer/ReloadBtn" to="." method="_on_reload_btn_button_down"]
 [connection signal="button_down" from="GameLose/Control/VBoxContainer/HomeBtn" to="." method="_on_home_btn_button_down"]
 [connection signal="timeout" from="UpDownSpeed" to="." method="_on_up_down_speed_timeout"]
+[connection signal="timeout" from="StormTimer" to="." method="_on_storm_timer_timeout"]
