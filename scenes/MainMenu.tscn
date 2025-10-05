@@ -24,6 +24,8 @@
 [node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "settings_menu", "music_player")]
 script = ExtResource("1_83exj")
 main_menu = NodePath("MainMenu/MenuPunkts")
+DOMAIN_NAME = "mmrp-games.ru"
+HTTPS = true
 settings_menu = NodePath("MainMenu/SettingsPunkts")
 music_player = NodePath("Music")
 
