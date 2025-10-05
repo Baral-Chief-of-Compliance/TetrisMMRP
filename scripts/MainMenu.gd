@@ -4,6 +4,9 @@ extends CanvasLayer
 ## Главное меню 
 var main_menu : VBoxContainer 
 
+@export var DOMAIN_NAME : String = 'localhost'
+@export var HTTPS : bool = false
+
 @export
 ## Меню с настройками
 var settings_menu : VBoxContainer
@@ -29,6 +32,14 @@ func _on_exit_btn_button_down():
 	music_player.stop()
 	if os_name == 'Android':
 		get_tree().quit(true)
+	elif os_name == 'Web':
+		var http_protocol = "http"
+		if HTTPS:
+			http_protocol = "https"
+			
+		JavaScriptBridge.eval("window.location.href='{http}://{domain}/'".format(
+			{"http": http_protocol, "domain": DOMAIN_NAME}
+		))
 	else:
 		get_tree().quit()
 
