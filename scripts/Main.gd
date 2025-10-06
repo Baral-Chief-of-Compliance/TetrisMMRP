@@ -5,6 +5,7 @@ const GRID_WIDTH = 10
 const GRID_HEIGHT = 20
 const CELL_SIZE = 64
 const BASE_DROP_SPEED = 1.0
+const MAX_SPEED_CUP = 0.4
 
 # Сцены фигур
 const PIECE_SCENES = {
@@ -755,26 +756,26 @@ func _input(event):
 #			start_new_game()
 #		return
 #
-#	if event.is_action_pressed("ui_left"):
-#		move_piece(Vector2i(-1, 0))
+	elif event.is_action_pressed("ui_left"):
+		move_piece(Vector2i(-1, 0))
 #
-#	elif event.is_action_pressed("ui_right"):
-#		move_piece(Vector2i(1, 0))
+	elif event.is_action_pressed("ui_right"):
+		move_piece(Vector2i(1, 0))
 #
 #	elif event.is_action_pressed("ui_down"):
 #		if move_piece(Vector2i(0, 1)):
 #			drop_timer = 0.0
 #
-#	elif event.is_action_pressed("ui_up"):
-#		rotate_piece()
+	elif event.is_action_pressed("ui_up"):
+		rotate_piece()
 #
-#	elif event.is_action_pressed("ui_select"): # Пробел
-#		# Hard drop - мгновенное падение
-#		current_position = ghost_position
-#
-#		## Падение блока в низ
-#		fall_stream_player.play()
-#		move_piece(Vector2i(0, 1))
+	elif event.is_action_pressed("ui_select"): # Пробел
+		# Hard drop - мгновенное падение
+		current_position = ghost_position
+
+		## Падение блока в низ
+		fall_stream_player.play()
+		move_piece(Vector2i(0, 1))
 #		конец блока с клавой
 		
 #Обработка прикосновений
@@ -843,8 +844,9 @@ func _on_home_btn_button_down():
 
 #Увеличение скорости со временем
 func _on_up_down_speed_timeout():
-	level += 1
-	current_drop_speed = max(0.1, BASE_DROP_SPEED - (level - 1) * 0.1)
+	if current_drop_speed > MAX_SPEED_CUP:
+		level += 1
+		current_drop_speed = max(0.1, BASE_DROP_SPEED - (level - 1) * 0.1)
 
 #Шторм в игре
 func _on_storm_timer_timeout():

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Tetris 2"
+config/name="Tetris"
 run/main_scene="res://scenes/LogoScene.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 boot_splash/bg_color=Color(1, 1, 1, 1)
@@ -23,6 +23,7 @@ config/icon="res://assets/GameLogo/GameLogo.png"
 
 window/size/viewport_width=1080
 window/size/viewport_height=1920
+window/size/mode=3
 window/size/window_width_override=1080
 window/size/window_height_override=2220
 window/stretch/mode="canvas_items"
