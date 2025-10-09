@@ -17,6 +17,11 @@ var game_guid_packed_scene : PackedScene = preload('res://scenes/guid_for_game.t
 
 
 @export
+## Сцена с таблицей лидеров
+var leaderboard_scene : PackedScene = preload('res://scenes/LeaderBoardsWindow.tscn')
+
+
+@export
 ## Music
 var music_player : AudioStreamPlayer = null
 
@@ -64,5 +69,10 @@ func _on_settings_btn_button_down():
 
 ## Переход на с цену игры
 func _on_play_btn_button_down():
-	music_player.stop()	
+	music_player.stop()
 	get_tree().change_scene_to_packed(game_guid_packed_scene)
+
+#при нажатии на кнопку списков лидеров игры
+func _on_leader_board_btn_button_down():
+	music_player.stop()	
+	get_tree().change_scene_to_packed(leaderboard_scene)

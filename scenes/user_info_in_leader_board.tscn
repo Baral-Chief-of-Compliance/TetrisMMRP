@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://43hp0jb8dn4g"]
+
+[ext_resource type="Script" path="res://scripts/user_info_in_leader_board.gd" id="1_kowkm"]
+[ext_resource type="LabelSettings" uid="uid://btpfp3eehnjk1" path="res://assets/LabelSettingForLeadeaBoard.tres" id="2_4mf53"]
+
+[node name="UserInfoInLeaderBoard" type="MarginContainer" node_paths=PackedStringArray("username_label", "user_score_label")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 10.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_kowkm")
+username_label = NodePath("HBoxContainer/UserName")
+user_score_label = NodePath("HBoxContainer/UserScore")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 400
+
+[node name="UserName" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "имя игрока"
+label_settings = ExtResource("2_4mf53")
+vertical_alignment = 1
+
+[node name="UserScore" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "50000"
+label_settings = ExtResource("2_4mf53")
+vertical_alignment = 1

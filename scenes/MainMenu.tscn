@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cbdrgaivh4wje"]
+[gd_scene load_steps=23 format=3 uid="uid://cbdrgaivh4wje"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_83exj"]
 [ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="1_y3gqm"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dnyaf8hbbqu18" path="res://assets/Btns/ExitBtnNormal.png" id="10_plo1a"]
 [ext_resource type="Texture2D" uid="uid://ci6v1b2v1h20w" path="res://assets/Btns/SettingsBtnPressed.png" id="11_f0w6g"]
 [ext_resource type="Texture2D" uid="uid://3cfrwnlukhbe" path="res://assets/Btns/ExitBtnPressed.png" id="11_tqbi8"]
+[ext_resource type="Texture2D" uid="uid://dbtafabb3irfg" path="res://assets/Btns/LeaderBoardBtn/LeaderBoardsBtnNormal.png" id="12_nw2gk"]
+[ext_resource type="Texture2D" uid="uid://b6xedy2fe7wp2" path="res://assets/Btns/LeaderBoardBtn/LeaderBoardsBtnPressed.png" id="13_6inr2"]
 [ext_resource type="Texture2D" uid="uid://dwvotkcv0s3k" path="res://assets/GameLogo/SettingName.png" id="13_vxt8n"]
 [ext_resource type="Texture2D" uid="uid://dpe7eumrlolhi" path="res://assets/Btns/BackBtnNormal.png" id="14_05pwj"]
 [ext_resource type="Texture2D" uid="uid://183ynhlgp43m" path="res://assets/GameLogo/MusicName.png" id="15_lavbv"]
@@ -114,8 +116,15 @@ texture_focused = ExtResource("11_f0w6g")
 
 [node name="MarginContainer4" type="MarginContainer" parent="MainMenu/MenuPunkts"]
 layout_mode = 2
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="LeaderBoardBtn" type="TextureButton" parent="MainMenu/MenuPunkts/MarginContainer4"]
+layout_mode = 2
+texture_normal = ExtResource("12_nw2gk")
+texture_pressed = ExtResource("13_6inr2")
+texture_hover = ExtResource("13_6inr2")
+texture_focused = ExtResource("12_nw2gk")
 
 [node name="ExitBtn" type="TextureButton" parent="MainMenu/MenuPunkts"]
 layout_mode = 2
@@ -194,5 +203,6 @@ bus = &"Music"
 [connection signal="button_down" from="MainMenu/MenuPunkts/PlayBtn" to="." method="_on_play_btn_button_down"]
 [connection signal="button_down" from="MainMenu/MenuPunkts/MMRPBtn" to="." method="_on_mmrp_btn_button_down"]
 [connection signal="button_down" from="MainMenu/MenuPunkts/SettingsBtn" to="." method="_on_settings_btn_button_down"]
+[connection signal="button_down" from="MainMenu/MenuPunkts/MarginContainer4/LeaderBoardBtn" to="." method="_on_leader_board_btn_button_down"]
 [connection signal="button_down" from="MainMenu/MenuPunkts/ExitBtn" to="." method="_on_exit_btn_button_down"]
 [connection signal="button_down" from="MainMenu/SettingsPunkts/BackToMenuBtn" to="." method="_on_back_to_menu_btn_button_down"]

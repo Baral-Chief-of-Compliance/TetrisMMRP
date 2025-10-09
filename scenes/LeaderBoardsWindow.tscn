@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://tx43nljcbg8n"]
+
+[ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="1_difhs"]
+[ext_resource type="Script" path="res://scripts/LeaderBoardsWindow.gd" id="1_ytpoq"]
+[ext_resource type="LabelSettings" uid="uid://cr45oyx4tfw17" path="res://SettingsForLabel.tres" id="2_uofls"]
+[ext_resource type="Texture2D" uid="uid://bs38sni40ixvt" path="res://assets/Btns/HomeBtnNormal.png" id="3_otjpo"]
+[ext_resource type="Texture2D" uid="uid://c6ngi1ni8brnx" path="res://assets/Btns/HomeBtnPressed.png" id="4_j6aap"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("users_block")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ytpoq")
+users_block = NodePath("VBoxContainer/ScrollContainer/VBoxContainer")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_difhs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 100
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Таблица лидеров"
+label_settings = ExtResource("2_uofls")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_otjpo")
+texture_pressed = ExtResource("4_j6aap")
+texture_hover = ExtResource("4_j6aap")
+texture_focused = ExtResource("3_otjpo")
+
+[connection signal="button_down" from="VBoxContainer/MarginContainer3/TextureButton" to="." method="_on_texture_button_button_down"]

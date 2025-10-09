@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://btpfp3eehnjk1"]
+
+[ext_resource type="FontFile" uid="uid://cibwj2gu4ni60" path="res://assets/fonts/OpenSans-VariableFont_wdth,wght.ttf" id="1_0j4rd"]
+
+[resource]
+font = ExtResource("1_0j4rd")
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
