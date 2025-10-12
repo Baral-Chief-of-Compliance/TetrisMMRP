@@ -9,13 +9,13 @@ const MAX_SPEED_CUP = 0.4
 
 # Сцены фигур
 const PIECE_SCENES = {
-	"I": [],
-	"O":  [],
-	"T":  [],
-	"L":  [],
-	"J":  [],
+#	"I": [],
+#	"O":  [],
+#	"T":  [],
+#	"L":  [],
+#	"J":  [],
 	"S":  [],
-	"LINE": []
+#	"LINE": []
 }
 
 
@@ -136,8 +136,8 @@ const PIECE_SCENES = {
 ## Для фигуры S
 @onready var S_1 : Texture2D = load("res://assets/pieces/S/S_1.png")
 @onready var S_2 : Texture2D = load("res://assets/pieces/S/S_2.png")
-@onready var S_3 : Texture2D = load("res://assets/pieces/S/S_3/S_3.png")
-@onready var S_4 : Texture2D = load("res://assets/pieces/S/S_4/S_4.png")
+@onready var S_3 : Texture2D = load("res://assets/pieces/S/S_3.png")
+@onready var S_4 : Texture2D = load("res://assets/pieces/S/S_4.png")
 
 ## Для фигуры S на 90
 @onready var S_1_90 : Texture2D = load("res://assets/pieces/S/90/S_1_90.png")

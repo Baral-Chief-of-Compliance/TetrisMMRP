@@ -30,6 +30,11 @@ var not_blur_anim_name : String = 'not_blur'
 ## Наименование анимации для выходна в главное меню
 var exit_game_anim : String = 'exit_game'
 
+
+@export
+## Сцена c главным меню
+var main_menu : PackedScene = preload('res://scenes/MainMenu.tscn')
+
 ## Нажать на паузу
 func _on_pause_btn_button_down():
 	animation_player.play(blur_anim_name)	
@@ -57,7 +62,7 @@ func _on_home_btn_button_down():
 ## Кнопка выхода их игры
 func exitGame():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_packed(main_menu)
 
 ## Кнопка обратно в меню паузы
 func _on_back_btn_button_down():
