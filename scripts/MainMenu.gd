@@ -23,6 +23,7 @@ var leaderboard_scene : PackedScene = preload('res://scenes/LeaderBoardsWindow.t
 ## ссылка на сайт ММРП
 var site_mmrp : String = 'https://mmrp.ru/'
 
+
 @onready var os_name : String = OS.get_name()
 
 ## Выход из игры
