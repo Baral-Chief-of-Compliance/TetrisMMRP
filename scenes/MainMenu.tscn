@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cbdrgaivh4wje"]
+[gd_scene load_steps=14 format=3 uid="uid://cbdrgaivh4wje"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_83exj"]
 [ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="1_y3gqm"]
@@ -9,27 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://bci1w83obj6sn" path="res://assets/Btns/PlayBtnPressed.png" id="6_31pik"]
 [ext_resource type="Texture2D" uid="uid://db7wvayib6diu" path="res://assets/Btns/MMRPBtnNormal.png" id="7_26s6e"]
 [ext_resource type="Texture2D" uid="uid://clrxnddyfwmg4" path="res://assets/Btns/MMRPBtnPressed.png" id="8_05qcw"]
-[ext_resource type="Texture2D" uid="uid://dtvj0ahlvyumn" path="res://assets/Btns/SettingsBtnNormal.png" id="9_c03jw"]
 [ext_resource type="Texture2D" uid="uid://dnyaf8hbbqu18" path="res://assets/Btns/ExitBtnNormal.png" id="10_plo1a"]
-[ext_resource type="Texture2D" uid="uid://ci6v1b2v1h20w" path="res://assets/Btns/SettingsBtnPressed.png" id="11_f0w6g"]
 [ext_resource type="Texture2D" uid="uid://3cfrwnlukhbe" path="res://assets/Btns/ExitBtnPressed.png" id="11_tqbi8"]
 [ext_resource type="Texture2D" uid="uid://dbtafabb3irfg" path="res://assets/Btns/LeaderBoardBtn/LeaderBoardsBtnNormal.png" id="12_nw2gk"]
 [ext_resource type="Texture2D" uid="uid://b6xedy2fe7wp2" path="res://assets/Btns/LeaderBoardBtn/LeaderBoardsBtnPressed.png" id="13_6inr2"]
-[ext_resource type="Texture2D" uid="uid://dwvotkcv0s3k" path="res://assets/GameLogo/SettingName.png" id="13_vxt8n"]
-[ext_resource type="Texture2D" uid="uid://dpe7eumrlolhi" path="res://assets/Btns/BackBtnNormal.png" id="14_05pwj"]
-[ext_resource type="Texture2D" uid="uid://183ynhlgp43m" path="res://assets/GameLogo/MusicName.png" id="15_lavbv"]
-[ext_resource type="Texture2D" uid="uid://bsq3scj2wjmxj" path="res://assets/Btns/BackBtnPressed.png" id="15_yslaa"]
-[ext_resource type="PackedScene" uid="uid://0u0egro8g5of" path="res://scenes/bus_slider.tscn" id="16_2wtqq"]
-[ext_resource type="Texture2D" uid="uid://cc4m1dgp14ku7" path="res://assets/GameLogo/SoundsName.png" id="17_83q48"]
-[ext_resource type="AudioStream" uid="uid://rdastt61r01b" path="res://assets/music/MainMenu.mp3" id="17_gaupl"]
 
-[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "settings_menu", "music_player")]
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("main_menu")]
 script = ExtResource("1_83exj")
 main_menu = NodePath("MainMenu/MenuPunkts")
 DOMAIN_NAME = "mmrp-games.ru"
 HTTPS = true
-settings_menu = NodePath("MainMenu/SettingsPunkts")
-music_player = NodePath("Music")
 
 [node name="MainMenu" type="Control" parent="."]
 layout_mode = 3
@@ -102,18 +91,6 @@ texture_pressed = ExtResource("8_05qcw")
 texture_hover = ExtResource("8_05qcw")
 texture_focused = ExtResource("8_05qcw")
 
-[node name="MarginContainer3" type="MarginContainer" parent="MainMenu/MenuPunkts"]
-layout_mode = 2
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="SettingsBtn" type="TextureButton" parent="MainMenu/MenuPunkts"]
-layout_mode = 2
-texture_normal = ExtResource("9_c03jw")
-texture_pressed = ExtResource("11_f0w6g")
-texture_hover = ExtResource("11_f0w6g")
-texture_focused = ExtResource("11_f0w6g")
-
 [node name="MarginContainer4" type="MarginContainer" parent="MainMenu/MenuPunkts"]
 layout_mode = 2
 theme_override_constants/margin_top = 32
@@ -133,76 +110,7 @@ texture_pressed = ExtResource("11_tqbi8")
 texture_hover = ExtResource("11_tqbi8")
 texture_focused = ExtResource("11_tqbi8")
 
-[node name="SettingsPunkts" type="VBoxContainer" parent="MainMenu"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -222.5
-offset_top = -102.5
-offset_right = 222.5
-offset_bottom = 102.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SettingsName" type="TextureRect" parent="MainMenu/SettingsPunkts"]
-layout_mode = 2
-texture = ExtResource("13_vxt8n")
-
-[node name="MarginContainer" type="MarginContainer" parent="MainMenu/SettingsPunkts"]
-layout_mode = 2
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_bottom = 40
-
-[node name="MusicName" type="TextureRect" parent="MainMenu/SettingsPunkts"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("15_lavbv")
-
-[node name="BusSlider" parent="MainMenu/SettingsPunkts" instance=ExtResource("16_2wtqq")]
-layout_mode = 2
-bus_name = "Music"
-
-[node name="MarginContainer2" type="MarginContainer" parent="MainMenu/SettingsPunkts"]
-layout_mode = 2
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="SoundsName" type="TextureRect" parent="MainMenu/SettingsPunkts"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("17_83q48")
-
-[node name="BusSlider2" parent="MainMenu/SettingsPunkts" instance=ExtResource("16_2wtqq")]
-layout_mode = 2
-bus_name = "Volumes"
-
-[node name="MarginContainer3" type="MarginContainer" parent="MainMenu/SettingsPunkts"]
-layout_mode = 2
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="BackToMenuBtn" type="TextureButton" parent="MainMenu/SettingsPunkts"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("14_05pwj")
-texture_pressed = ExtResource("15_yslaa")
-texture_hover = ExtResource("15_yslaa")
-texture_focused = ExtResource("15_yslaa")
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_gaupl")
-autoplay = true
-bus = &"Music"
-
 [connection signal="button_down" from="MainMenu/MenuPunkts/PlayBtn" to="." method="_on_play_btn_button_down"]
 [connection signal="button_down" from="MainMenu/MenuPunkts/MMRPBtn" to="." method="_on_mmrp_btn_button_down"]
-[connection signal="button_down" from="MainMenu/MenuPunkts/SettingsBtn" to="." method="_on_settings_btn_button_down"]
 [connection signal="button_down" from="MainMenu/MenuPunkts/MarginContainer4/LeaderBoardBtn" to="." method="_on_leader_board_btn_button_down"]
 [connection signal="button_down" from="MainMenu/MenuPunkts/ExitBtn" to="." method="_on_exit_btn_button_down"]
-[connection signal="button_down" from="MainMenu/SettingsPunkts/BackToMenuBtn" to="." method="_on_back_to_menu_btn_button_down"]

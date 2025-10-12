@@ -7,9 +7,6 @@ var main_menu : VBoxContainer
 @export var DOMAIN_NAME : String = 'localhost'
 @export var HTTPS : bool = false
 
-@export
-## Меню с настройками
-var settings_menu : VBoxContainer
 
 @export
 ## Сцена с игрой
@@ -21,10 +18,6 @@ var game_guid_packed_scene : PackedScene = preload('res://scenes/guid_for_game.t
 var leaderboard_scene : PackedScene = preload('res://scenes/LeaderBoardsWindow.tscn')
 
 
-@export
-## Music
-var music_player : AudioStreamPlayer = null
-
 
 @export
 ## ссылка на сайт ММРП
@@ -34,7 +27,6 @@ var site_mmrp : String = 'https://mmrp.ru/'
 
 ## Выход из игры
 func _on_exit_btn_button_down():
-	music_player.stop()
 	if os_name == 'Android':
 		get_tree().quit(true)
 	elif os_name == 'Web':
@@ -57,22 +49,10 @@ func _on_mmrp_btn_button_down():
 		push_error("Не удалось открыть ссылку: " + site_mmrp)
 		print("Ошибка при открытии URL: ", error)
 
-## Переход назад в меню
-func _on_back_to_menu_btn_button_down():
-	settings_menu.hide()
-	main_menu.show()
-
-## Переход в меню настроек
-func _on_settings_btn_button_down():
-	main_menu.hide()
-	settings_menu.show()
-
 ## Переход на с цену игры
 func _on_play_btn_button_down():
-	music_player.stop()
 	get_tree().change_scene_to_packed(game_guid_packed_scene)
 
 #при нажатии на кнопку списков лидеров игры
 func _on_leader_board_btn_button_down():
-	music_player.stop()	
 	get_tree().change_scene_to_packed(leaderboard_scene)

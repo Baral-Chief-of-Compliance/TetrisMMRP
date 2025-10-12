@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dx5fx52rbf4jc"]
+[gd_scene load_steps=16 format=3 uid="uid://dx5fx52rbf4jc"]
 
 [ext_resource type="Texture2D" uid="uid://x6tohm8t0aoe" path="res://assets/Btns/PauseBtnNormal.png" id="1_2sex1"]
 [ext_resource type="Texture2D" uid="uid://csl02opmhpgh3" path="res://assets/GameLogo/PauseName.png" id="1_csa0s"]
@@ -7,16 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bkq70s7mtrqrf" path="res://assets/Btns/ResumeBtnNormal.png" id="2_7slxq"]
 [ext_resource type="Texture2D" uid="uid://cge0rrdp3c7h1" path="res://assets/Btns/PauseBtnPressed.png" id="2_xp7xt"]
 [ext_resource type="Texture2D" uid="uid://grdtfvhwha4r" path="res://assets/Btns/ResumeBtnPressed.png" id="3_steq5"]
-[ext_resource type="Texture2D" uid="uid://dtvj0ahlvyumn" path="res://assets/Btns/SettingsBtnNormal.png" id="4_2uoko"]
-[ext_resource type="Texture2D" uid="uid://ci6v1b2v1h20w" path="res://assets/Btns/SettingsBtnPressed.png" id="5_e5hhm"]
 [ext_resource type="Texture2D" uid="uid://bs38sni40ixvt" path="res://assets/Btns/HomeBtnNormal.png" id="6_ttywn"]
 [ext_resource type="Texture2D" uid="uid://c6ngi1ni8brnx" path="res://assets/Btns/HomeBtnPressed.png" id="7_jlgm0"]
-[ext_resource type="Texture2D" uid="uid://dwvotkcv0s3k" path="res://assets/GameLogo/SettingName.png" id="10_2qreh"]
-[ext_resource type="Texture2D" uid="uid://183ynhlgp43m" path="res://assets/GameLogo/MusicName.png" id="11_gvj3s"]
-[ext_resource type="PackedScene" uid="uid://0u0egro8g5of" path="res://scenes/bus_slider.tscn" id="12_d2wen"]
-[ext_resource type="Texture2D" uid="uid://cc4m1dgp14ku7" path="res://assets/GameLogo/SoundsName.png" id="13_6fll8"]
-[ext_resource type="Texture2D" uid="uid://dpe7eumrlolhi" path="res://assets/Btns/BackBtnNormal.png" id="14_hsbvb"]
-[ext_resource type="Texture2D" uid="uid://bsq3scj2wjmxj" path="res://assets/Btns/BackBtnPressed.png" id="15_x0gt2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_38wvh"]
 shader = ExtResource("2_6j7px")
@@ -118,7 +110,7 @@ grow_vertical = 2
 script = ExtResource("1_uyrqr")
 pause_btn = NodePath("MarginContainer/PauseBtn")
 pause_block = NodePath("VBoxContainer")
-settings_block = NodePath("Settings")
+settings_block = NodePath("")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -186,89 +178,12 @@ layout_mode = 2
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="SettingsBtn" type="TextureButton" parent="VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("4_2uoko")
-texture_pressed = ExtResource("5_e5hhm")
-texture_hover = ExtResource("5_e5hhm")
-texture_focused = ExtResource("5_e5hhm")
-
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_bottom = 16
-
 [node name="HomeBtn" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("6_ttywn")
 texture_pressed = ExtResource("7_jlgm0")
 texture_hover = ExtResource("7_jlgm0")
 texture_focused = ExtResource("7_jlgm0")
-
-[node name="Settings" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SettingsName" type="TextureRect" parent="Settings"]
-layout_mode = 2
-texture = ExtResource("10_2qreh")
-
-[node name="MarginContainer" type="MarginContainer" parent="Settings"]
-layout_mode = 2
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_bottom = 40
-
-[node name="TextureRect" type="TextureRect" parent="Settings"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("11_gvj3s")
-stretch_mode = 2
-
-[node name="BusSlider" parent="Settings" instance=ExtResource("12_d2wen")]
-layout_mode = 2
-bus_name = "Music"
-
-[node name="MarginContainer2" type="MarginContainer" parent="Settings"]
-layout_mode = 2
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="TextureRect2" type="TextureRect" parent="Settings"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("13_6fll8")
-
-[node name="BusSlider2" parent="Settings" instance=ExtResource("12_d2wen")]
-layout_mode = 2
-bus_name = "Volumes"
-
-[node name="MarginContainer3" type="MarginContainer" parent="Settings"]
-layout_mode = 2
-
-[node name="MarginContainer4" type="MarginContainer" parent="Settings"]
-layout_mode = 2
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="BackBtn" type="TextureButton" parent="Settings"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("14_hsbvb")
-texture_pressed = ExtResource("15_x0gt2")
-texture_hover = ExtResource("15_x0gt2")
-texture_focused = ExtResource("15_x0gt2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -277,6 +192,4 @@ libraries = {
 
 [connection signal="button_down" from="MarginContainer/PauseBtn" to="." method="_on_pause_btn_button_down"]
 [connection signal="button_down" from="VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_button_down"]
-[connection signal="button_down" from="VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_button_down"]
 [connection signal="button_down" from="VBoxContainer/HomeBtn" to="." method="_on_home_btn_button_down"]
-[connection signal="button_down" from="Settings/BackBtn" to="." method="_on_back_btn_button_down"]
