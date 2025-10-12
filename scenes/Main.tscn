@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cdxrvdedkcdfu"]
+[gd_scene load_steps=35 format=3 uid="uid://cdxrvdedkcdfu"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_gy42u"]
 [ext_resource type="Texture2D" uid="uid://chuy2t0jlq432" path="res://assets/cells_back.png" id="2_1lpjx"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://depv2bseigv6b" path="res://assets/Btns/ReplayBtnPressed.png" id="19_7q6iq"]
 [ext_resource type="Texture2D" uid="uid://bs38sni40ixvt" path="res://assets/Btns/HomeBtnNormal.png" id="20_fok0h"]
 [ext_resource type="Texture2D" uid="uid://c6ngi1ni8brnx" path="res://assets/Btns/HomeBtnPressed.png" id="21_3suhx"]
+[ext_resource type="Texture2D" uid="uid://bpld4usluv7bf" path="res://assets/Btns/sharedResutl/ShareBtnNormal.png" id="22_mg8bj"]
+[ext_resource type="Texture2D" uid="uid://b5golyqucgco3" path="res://assets/Btns/sharedResutl/ShareBtnPressed.png" id="23_skagc"]
 [ext_resource type="Texture2D" uid="uid://bq2s3he4okkjq" path="res://assets/storm/DockerFace.png" id="25_cr43o"]
 [ext_resource type="AudioStream" uid="uid://cupwqucplyp0l" path="res://assets/sounds/ligthning.wav" id="27_c0slt"]
 
@@ -195,8 +197,9 @@ _data = {
 "StromAnimation": SubResource("Animation_ds30t")
 }
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("gameInterface", "loseMenu")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("share_btn", "gameInterface", "loseMenu")]
 script = ExtResource("1_gy42u")
+share_btn = NodePath("GameLose/Control/VBoxContainer/MarginContainer4/ShareResultButton")
 gameInterface = NodePath("GameInterface")
 loseMenu = NodePath("GameLose")
 
@@ -460,7 +463,6 @@ texture = ExtResource("15_sd1jh")
 position = Vector2(733, 658)
 
 [node name="GameLose" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="GameLose"]
 material = SubResource("ShaderMaterial_rghh8")
@@ -528,10 +530,18 @@ label_settings = ExtResource("17_4y0im")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="GameLose/Control/VBoxContainer"]
+[node name="MarginContainer4" type="MarginContainer" parent="GameLose/Control/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 40
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_bottom = 32
+
+[node name="ShareResultButton" type="TextureButton" parent="GameLose/Control/VBoxContainer/MarginContainer4"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("22_mg8bj")
+texture_pressed = ExtResource("23_skagc")
+texture_hover = ExtResource("23_skagc")
+texture_focused = ExtResource("23_skagc")
 
 [node name="ReloadBtn" type="TextureButton" parent="GameLose/Control/VBoxContainer"]
 layout_mode = 2
@@ -540,7 +550,7 @@ texture_pressed = ExtResource("19_7q6iq")
 texture_hover = ExtResource("19_7q6iq")
 texture_focused = ExtResource("19_7q6iq")
 
-[node name="MarginContainer2" type="MarginContainer" parent="GameLose/Control/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameLose/Control/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_bottom = 16
@@ -574,6 +584,7 @@ libraries = {
 [node name="StromSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("27_c0slt")
 
+[connection signal="button_down" from="GameLose/Control/VBoxContainer/MarginContainer4/ShareResultButton" to="." method="_on_share_result_button_button_down"]
 [connection signal="button_down" from="GameLose/Control/VBoxContainer/ReloadBtn" to="." method="_on_reload_btn_button_down"]
 [connection signal="button_down" from="GameLose/Control/VBoxContainer/HomeBtn" to="." method="_on_home_btn_button_down"]
 [connection signal="timeout" from="UpDownSpeed" to="." method="_on_up_down_speed_timeout"]

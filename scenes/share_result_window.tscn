@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://d04x87g8n6o64"]
+
+[ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="1_dfm38"]
+[ext_resource type="Script" path="res://scripts/share_result_window.gd" id="1_ulkfi"]
+[ext_resource type="LabelSettings" uid="uid://cr45oyx4tfw17" path="res://SettingsForLabel.tres" id="2_455k6"]
+[ext_resource type="FontFile" uid="uid://cibwj2gu4ni60" path="res://assets/fonts/OpenSans-VariableFont_wdth,wght.ttf" id="3_55s7q"]
+[ext_resource type="Texture2D" uid="uid://c7ie5g0uy4aky" path="res://assets/Btns/addUser/AddUserBtnNormal.png" id="4_spa1q"]
+[ext_resource type="Texture2D" uid="uid://5ws3bbhro741" path="res://assets/Btns/addUser/AddUserBtnPressed.png" id="5_kjvuq"]
+[ext_resource type="Texture2D" uid="uid://jfnaxyygpstd" path="res://assets/Btns/addUser/AddUserBtnDisabled.png" id="6_jfloi"]
+
+[node name="ShareResultWindow" type="Control" node_paths=PackedStringArray("btn_create_user", "login_input", "email_input", "check_box")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ulkfi")
+btn_create_user = NodePath("VBoxContainer/TextureButton")
+login_input = NodePath("VBoxContainer/MarginContainer/LoginInput")
+email_input = NodePath("VBoxContainer/MarginContainer2/EmailInput")
+check_box = NodePath("VBoxContainer/HBoxContainer/CheckBox")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dfm38")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Поделитесь вашим результатом"
+label_settings = ExtResource("2_455k6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 16
+
+[node name="LoginInput" type="TextEdit" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_55s7q")
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Ваше имя"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="EmailInput" type="TextEdit" parent="VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_55s7q")
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Ваша электронная почта"
+
+[node name="HBoxContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_bottom = 40
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_55s7q")
+theme_override_font_sizes/font_size = 20
+text = "Согласен на обработку персональных данных
+и получение рекламных рассылок от АО «ММРП»"
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_spa1q")
+texture_pressed = ExtResource("5_kjvuq")
+texture_hover = ExtResource("5_kjvuq")
+texture_disabled = ExtResource("6_jfloi")
+texture_focused = ExtResource("5_kjvuq")
+
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/CheckBox" to="." method="_on_check_box_button_down"]
+[connection signal="button_down" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_button_down"]

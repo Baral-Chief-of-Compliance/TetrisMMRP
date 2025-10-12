@@ -7,15 +7,20 @@ const CELL_SIZE = 64
 const BASE_DROP_SPEED = 1.0
 const MAX_SPEED_CUP = 0.4
 
+
+@export
+#кнопка для отправки результата на сервер
+var share_btn : TextureButton = null
+
 # Сцены фигур
 const PIECE_SCENES = {
-#	"I": [],
-#	"O":  [],
-#	"T":  [],
-#	"L":  [],
-#	"J":  [],
+	"I": [],
+	"O":  [],
+	"T":  [],
+	"L":  [],
+	"J":  [],
 	"S":  [],
-#	"LINE": []
+	"LINE": []
 }
 
 
@@ -340,7 +345,11 @@ func spawn_new_piece():
 		game_over = true
 #		game_over_label.visible = true
 		gameInterface.visible = false
-		game_over_score.text = str(score)
+		game_over_score.text = str(score) #отметил для передачи очков
+		
+		Globals.user_data['score'] = score
+		if Globals.chek_need_save():
+			share_btn.show()
 		loseMenu.visible = true
 		return
 	
@@ -851,3 +860,8 @@ func _on_up_down_speed_timeout():
 #Шторм в игре
 func _on_storm_timer_timeout():
 	$AnimationStorm.play("StromAnimation")
+
+
+func _on_share_result_button_button_down():
+#	Кнопка для участия в розыгрыше
+	pass

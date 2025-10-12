@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://tx43nljcbg8n"]
+[gd_scene load_steps=10 format=3 uid="uid://tx43nljcbg8n"]
 
 [ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="1_difhs"]
 [ext_resource type="Script" path="res://scripts/LeaderBoardsWindow.gd" id="1_ytpoq"]
 [ext_resource type="LabelSettings" uid="uid://cr45oyx4tfw17" path="res://SettingsForLabel.tres" id="2_uofls"]
 [ext_resource type="Texture2D" uid="uid://bs38sni40ixvt" path="res://assets/Btns/HomeBtnNormal.png" id="3_otjpo"]
+[ext_resource type="FontFile" uid="uid://cibwj2gu4ni60" path="res://assets/fonts/OpenSans-VariableFont_wdth,wght.ttf" id="4_ddnci"]
 [ext_resource type="Texture2D" uid="uid://c6ngi1ni8brnx" path="res://assets/Btns/HomeBtnPressed.png" id="4_j6aap"]
+[ext_resource type="StyleBox" uid="uid://clondcv7v7smo" path="res://assets/Btns/Styles/new_style_box_flat.tres" id="5_8ya38"]
+[ext_resource type="StyleBox" uid="uid://nxt5ve5wnasj" path="res://assets/Btns/Styles/new_style_box_flat_hover.tres" id="6_jkhfn"]
+[ext_resource type="LabelSettings" uid="uid://btpfp3eehnjk1" path="res://assets/LabelSettingForLeadeaBoard.tres" id="9_50kln"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("users_block")]
+[node name="Control" type="Control" node_paths=PackedStringArray("users_block", "no_user_all_leaderboard", "no_user_today_leaderboard")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +19,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ytpoq")
 users_block = NodePath("VBoxContainer/ScrollContainer/VBoxContainer")
+no_user_all_leaderboard = NodePath("NoUserInAllLeaderBoard")
+no_user_today_leaderboard = NodePath("NoUserInTodayLeaderBoard")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -49,6 +55,43 @@ layout_mode = 2
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_bottom = 16
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="All" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_ddnci")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("5_8ya38")
+theme_override_styles/hover = ExtResource("6_jkhfn")
+theme_override_styles/pressed = ExtResource("6_jkhfn")
+theme_override_styles/focus = ExtResource("6_jkhfn")
+text = "За все время"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="Today" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ddnci")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("5_8ya38")
+theme_override_styles/hover = ExtResource("6_jkhfn")
+theme_override_styles/pressed = ExtResource("6_jkhfn")
+theme_override_styles/focus = ExtResource("6_jkhfn")
+text = "Сегодня"
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -71,4 +114,46 @@ texture_pressed = ExtResource("4_j6aap")
 texture_hover = ExtResource("4_j6aap")
 texture_focused = ExtResource("3_otjpo")
 
+[node name="NoUserInAllLeaderBoard" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "В таблице лидеров 
+за все вермя нет пользователей"
+label_settings = ExtResource("9_50kln")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoUserInTodayLeaderBoard" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "В таблице лидеров 
+за сегодня нет пользователей"
+label_settings = ExtResource("9_50kln")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/All" to="." method="_on_all_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/Today" to="." method="_on_today_button_down"]
 [connection signal="button_down" from="VBoxContainer/MarginContainer3/TextureButton" to="." method="_on_texture_button_button_down"]

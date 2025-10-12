@@ -19,6 +19,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://assets/GameLogo/GameLogo.png"
 
+[autoload]
+
+Globals="*res://scripts/Globals/globals.gd"
+
 [display]
 
 window/size/viewport_width=1080
