@@ -1,14 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://d04x87g8n6o64"]
+[gd_scene load_steps=9 format=3 uid="uid://d04x87g8n6o64"]
 
 [ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="1_dfm38"]
 [ext_resource type="Script" path="res://scripts/share_result_window.gd" id="1_ulkfi"]
 [ext_resource type="LabelSettings" uid="uid://cr45oyx4tfw17" path="res://SettingsForLabel.tres" id="2_455k6"]
 [ext_resource type="FontFile" uid="uid://cibwj2gu4ni60" path="res://assets/fonts/OpenSans-VariableFont_wdth,wght.ttf" id="3_55s7q"]
 [ext_resource type="Texture2D" uid="uid://c7ie5g0uy4aky" path="res://assets/Btns/addUser/AddUserBtnNormal.png" id="4_spa1q"]
+[ext_resource type="LabelSettings" uid="uid://bry4123t8y5gu" path="res://assets/LabelSettingForError.tres" id="5_juyqx"]
 [ext_resource type="Texture2D" uid="uid://5ws3bbhro741" path="res://assets/Btns/addUser/AddUserBtnPressed.png" id="5_kjvuq"]
 [ext_resource type="Texture2D" uid="uid://jfnaxyygpstd" path="res://assets/Btns/addUser/AddUserBtnDisabled.png" id="6_jfloi"]
 
-[node name="ShareResultWindow" type="Control" node_paths=PackedStringArray("btn_create_user", "login_input", "email_input", "check_box")]
+[node name="ShareResultWindow" type="Control" node_paths=PackedStringArray("btn_create_user", "login_input", "email_input", "check_box", "lableError")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +21,7 @@ btn_create_user = NodePath("VBoxContainer/TextureButton")
 login_input = NodePath("VBoxContainer/MarginContainer/LoginInput")
 email_input = NodePath("VBoxContainer/MarginContainer2/EmailInput")
 check_box = NodePath("VBoxContainer/HBoxContainer/CheckBox")
+lableError = NodePath("VBoxContainer/ErroBlock/ErrorLabel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -77,6 +79,20 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_55s7q")
 theme_override_font_sizes/font_size = 20
 placeholder_text = "Ваша электронная почта"
+
+[node name="ErroBlock" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ErrorLabel" type="Label" parent="VBoxContainer/ErroBlock"]
+visible = false
+layout_mode = 2
+text = "Ошибка"
+label_settings = ExtResource("5_juyqx")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2

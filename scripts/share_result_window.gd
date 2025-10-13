@@ -26,6 +26,14 @@ var check_box : CheckBox = null
 
 var user_agree_with_email_send : bool = false
 
+@export
+#блок отображающий ошибку
+var lableError : Label = null
+
+@export
+#сцена меню
+var main_menu_scene : PackedScene = preload('res://scenes/MainMenu.tscn')
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,17 +82,47 @@ func _on_request_completed_send_data(
 	headers: PackedStringArray,
 	body: PackedByteArray
 ):
+	var response_body = body.get_string_from_utf8()
 	if result == HTTPRequest.RESULT_SUCCESS and response_code == 200:
 		var json = JSON.new()
-		if json.parse(body.get_string_from_utf8()) == OK:
-			var res = json.data
+		json.parse(body.get_string_from_utf8())
+		var response = json.get_data()
 		
-		else:
-			print("Ошибка HTTP:")
+		Globals.user_data['user_id'] = response.get('id')
+		Globals.user_data['username'] = response.get('name') 
+		Globals.user_data['email'] = response.get('email')
+		Globals.user_data['score'] = response.get('score')
+		
+		Globals.save_data()
+		get_tree().change_scene_to_packed(main_menu_scene)
+		
 	else:
-		print("Ошибка")
-
+		var json = JSON.new()
+		json.parse(response_body)
+		var response = json.get_data()
+		
+		lableError.show()
+		lableError.text = response.get("detail")
 
 func _on_texture_button_button_down():
 #	Отправка данных
-	pass # Replace with function body.
+	var url = Globals.api_path + "users/"
+	var headers = ["Content-Type: application/json"]
+	var score = Globals.user_data["score"]
+	if not score:
+		score = 0
+	var body = JSON.stringify({
+		"name": login_input.text,
+		"email": email_input.text,
+		"score": score
+	})
+		
+	var error = http_request_to_send_data.request(
+		url,
+		headers,
+		HTTPClient.METHOD_POST,
+		body
+	)
+	
+	if error != OK:
+		print(error)

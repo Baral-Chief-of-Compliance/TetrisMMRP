@@ -1,6 +1,8 @@
 extends Node
 
 var api_path : String = "https://mmrp-games.ru/api/v1/tetris/"
+#var api_path : String = "http://localhost/api/v1/tetris/"
+
 
 
 var user_data: Dictionary = {
@@ -16,14 +18,20 @@ func save_data():
 	var file = FileAccess.open("user://user_data.json", FileAccess.WRITE)
 	if file:
 		file.store_string(JSON.stringify(user_data))
-		file.close()		
+		file.close()
+	print(user_data)
+	
 
 func chek_need_save() -> bool:
 #	проверка нужно ли сохранять
-	if user_data["user_id"] != 0:
-		return true
+	print(user_data)
+	if user_data["user_id"]:
+		if len(user_data["user_id"]) != 0:
+			return false
+		else:
+			return true 
 	else:
-		return false
+		return true
 		
 func check_need_send_score(score: int) -> bool:
 #	Проверка нужно ли сохранять и отправлять данные
@@ -41,12 +49,14 @@ func _ready():
 			file.close()
 			
 			var json = JSON.new()
-			var error = json.parse(content)
-			if error == OK:
-				user_data["user_id"] = json.get("user_id")
-				user_data["username"] = json.get("username")
-				user_data["email"] = json.get("email")
-				user_data["score"] = json.get("score")
+			json.parse(content)
+			var data = json.get_data()
+			
+			user_data["user_id"] = data.get("user_id")
+			user_data["username"] = data.get("username")
+			user_data["email"] = data.get("email")
+			user_data["score"] = data.get("score")
+
 	else:
 		var file = FileAccess.open("user://user_data.json", FileAccess.WRITE)
 		if file:

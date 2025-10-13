@@ -140,6 +140,10 @@ func _ready():
 	get_leaderboards_today()
 	
 
+func draw_users_row():
+	var childrens = users_block.get_children()
+	for child in childrens:
+		child.queue_free()
 	for user in users:
 		var user_scene = user_info_packed_scene.instantiate()
 		user_scene.username = user.name
@@ -182,6 +186,7 @@ func _on_request_completed(
 				var data = json.get_data()
 				users = data.get("users")
 				show_notif()
+				draw_users_row()
 		else:
 			print("Ошибка HTTP: ", response_code)
 	else:

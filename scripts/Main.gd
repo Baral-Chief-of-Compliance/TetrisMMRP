@@ -12,6 +12,14 @@ const MAX_SPEED_CUP = 0.4
 #кнопка для отправки результата на сервер
 var share_btn : TextureButton = null
 
+@export
+#сцена для отправки результата
+var share_scene : PackedScene = preload("res://scenes/share_result_window.tscn")
+
+@export
+#HTTP client для обновления данных
+var http_request : HTTPRequest = null
+
 # Сцены фигур
 const PIECE_SCENES = {
 	"I": [],
@@ -347,9 +355,28 @@ func spawn_new_piece():
 		gameInterface.visible = false
 		game_over_score.text = str(score) #отметил для передачи очков
 		
-		Globals.user_data['score'] = score
+
 		if Globals.chek_need_save():
+			print("нужно сохранить, значит, что нет пользователя")
+			Globals.user_data['score'] = score
 			share_btn.show()
+		else:
+			print('Нужно обновить счет')
+			if Globals.check_need_send_score(score):
+				print('Да цифра большая')
+				Globals.user_data['score'] = score
+				var url = Globals.api_path + 'users/' + Globals.user_data['user_id'] + '/update-score'
+				var headers = ["Content-Type: application/json"]
+				var body = JSON.stringify({
+					"score": score
+				})
+				var error = http_request.request(
+					url,
+					headers,
+					HTTPClient.METHOD_PUT,
+					body
+				)
+			
 		loseMenu.visible = true
 		return
 	
@@ -864,4 +891,8 @@ func _on_storm_timer_timeout():
 
 func _on_share_result_button_button_down():
 #	Кнопка для участия в розыгрыше
-	pass
+	get_tree().change_scene_to_packed(share_scene)
+
+
+func _on_http_request_for_update_user_request_completed(result, response_code, headers, body):
+	pass # Replace with function body.
