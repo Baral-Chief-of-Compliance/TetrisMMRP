@@ -357,13 +357,11 @@ func spawn_new_piece():
 		
 
 		if Globals.chek_need_save():
-			print("нужно сохранить, значит, что нет пользователя")
 			Globals.user_data['score'] = score
 			share_btn.show()
 		else:
 			print('Нужно обновить счет')
 			if Globals.check_need_send_score(score):
-				print('Да цифра большая')
 				Globals.user_data['score'] = score
 				var url = Globals.api_path + 'users/' + Globals.user_data['user_id'] + '/update-score'
 				var headers = ["Content-Type: application/json"]

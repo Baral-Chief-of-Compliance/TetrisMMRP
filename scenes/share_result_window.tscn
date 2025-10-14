@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d04x87g8n6o64"]
+[gd_scene load_steps=11 format=3 uid="uid://d04x87g8n6o64"]
 
 [ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="1_dfm38"]
 [ext_resource type="Script" path="res://scripts/share_result_window.gd" id="1_ulkfi"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://c7ie5g0uy4aky" path="res://assets/Btns/addUser/AddUserBtnNormal.png" id="4_spa1q"]
 [ext_resource type="LabelSettings" uid="uid://bry4123t8y5gu" path="res://assets/LabelSettingForError.tres" id="5_juyqx"]
 [ext_resource type="Texture2D" uid="uid://5ws3bbhro741" path="res://assets/Btns/addUser/AddUserBtnPressed.png" id="5_kjvuq"]
+[ext_resource type="Texture2D" uid="uid://bktbsmjmkkd3o" path="res://assets/chekbox/Chekbox_cheked (1).png" id="6_8sigr"]
 [ext_resource type="Texture2D" uid="uid://jfnaxyygpstd" path="res://assets/Btns/addUser/AddUserBtnDisabled.png" id="6_jfloi"]
+[ext_resource type="Texture2D" uid="uid://cmvs5ne03dmbm" path="res://assets/chekbox/Chekbox_empty.png" id="7_g0ucf"]
 
 [node name="ShareResultWindow" type="Control" node_paths=PackedStringArray("btn_create_user", "login_input", "email_input", "check_box", "lableError")]
 layout_mode = 3
@@ -60,11 +62,11 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_bottom = 16
 
 [node name="LoginInput" type="TextEdit" parent="VBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(500, 50)
+custom_minimum_size = Vector2(700, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_55s7q")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 40
 placeholder_text = "Ваше имя"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
@@ -73,11 +75,11 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="EmailInput" type="TextEdit" parent="VBoxContainer/MarginContainer2"]
-custom_minimum_size = Vector2(500, 50)
+custom_minimum_size = Vector2(700, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_55s7q")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 40
 placeholder_text = "Ваша электронная почта"
 
 [node name="ErroBlock" type="MarginContainer" parent="VBoxContainer"]
@@ -104,7 +106,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_55s7q")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
+theme_override_icons/checked = ExtResource("6_8sigr")
+theme_override_icons/unchecked = ExtResource("7_g0ucf")
 text = "Согласен на обработку персональных данных
 и получение рекламных рассылок от АО «ММРП»"
 

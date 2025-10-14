@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://43hp0jb8dn4g"]
+[gd_scene load_steps=7 format=3 uid="uid://43hp0jb8dn4g"]
 
 [ext_resource type="Script" path="res://scripts/user_info_in_leader_board.gd" id="1_kowkm"]
 [ext_resource type="LabelSettings" uid="uid://btpfp3eehnjk1" path="res://assets/LabelSettingForLeadeaBoard.tres" id="2_4mf53"]
+[ext_resource type="Texture2D" uid="uid://c7741po81usan" path="res://assets/iconsLeaderBoards/Gold.png" id="2_hautk"]
+[ext_resource type="Texture2D" uid="uid://b2g1dec87ij4v" path="res://assets/iconsLeaderBoards/Silver.png" id="3_c42yi"]
+[ext_resource type="Texture2D" uid="uid://b2ixc2sjjpccc" path="res://assets/iconsLeaderBoards/Bronze.png" id="4_yxesp"]
+[ext_resource type="Texture2D" uid="uid://b87oe8qtvyx1i" path="res://assets/iconsLeaderBoards/Person.png" id="5_i1thg"]
 
-[node name="UserInfoInLeaderBoard" type="MarginContainer" node_paths=PackedStringArray("username_label", "user_score_label")]
+[node name="UserInfoInLeaderBoard" type="MarginContainer" node_paths=PackedStringArray("username_label", "user_score_label", "gold_icon", "silver_icon", "bronze_icon", "person_iocn")]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 10.0
@@ -17,11 +21,51 @@ theme_override_constants/margin_bottom = 5
 script = ExtResource("1_kowkm")
 username_label = NodePath("HBoxContainer/UserName")
 user_score_label = NodePath("HBoxContainer/UserScore")
+gold_icon = NodePath("HBoxContainer/PlaceIcon/Gold")
+silver_icon = NodePath("HBoxContainer/PlaceIcon/Silver")
+bronze_icon = NodePath("HBoxContainer/PlaceIcon/Bronze")
+person_iocn = NodePath("HBoxContainer/UserIcon/UserIcon")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 400
+theme_override_constants/separation = 100
+
+[node name="PlaceIcon" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Gold" type="TextureRect" parent="HBoxContainer/PlaceIcon"]
+visible = false
+texture_filter = 2
+layout_mode = 2
+texture = ExtResource("2_hautk")
+stretch_mode = 1
+
+[node name="Silver" type="TextureRect" parent="HBoxContainer/PlaceIcon"]
+visible = false
+texture_filter = 2
+layout_mode = 2
+texture = ExtResource("3_c42yi")
+stretch_mode = 1
+
+[node name="Bronze" type="TextureRect" parent="HBoxContainer/PlaceIcon"]
+visible = false
+texture_filter = 2
+layout_mode = 2
+texture = ExtResource("4_yxesp")
+stretch_mode = 1
+
+[node name="UserIcon" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="UserIcon" type="TextureRect" parent="HBoxContainer/UserIcon"]
+visible = false
+texture_filter = 2
+layout_mode = 2
+texture = ExtResource("5_i1thg")
+stretch_mode = 1
 
 [node name="UserName" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)

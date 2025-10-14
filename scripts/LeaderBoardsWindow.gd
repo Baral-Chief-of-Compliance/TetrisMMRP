@@ -23,6 +23,10 @@ var no_user_all_leaderboard : Label = null
 #уведомление о том, что нет пользователей в таблице лидеров за сегодня
 var no_user_today_leaderboard : Label = null
 
+@export
+#наименование типа таблице лидеров
+var type_leaderboard : Label = null
+
 
 var all_leaderboard : bool = true
 var today_leaderboard : bool = true
@@ -116,6 +120,7 @@ func get_leaderboards():
 #	Получить таблицу лидеров
 	today_leaderboard = false
 	all_leaderboard = true
+	type_leaderboard.text = 'За все время'
 	
 	var url = Globals.api_path + "leaderboard/"
 	var error = http_request.request(url)
@@ -126,6 +131,7 @@ func get_leaderboards_today():
 #	Получить таблицу лидеров за сегодня
 	today_leaderboard = true
 	all_leaderboard = false
+	type_leaderboard.text = 'За Сегодня'
 	
 	var url = Globals.api_path + "leaderboard/today"
 	var error = http_request.request(url)
@@ -144,11 +150,16 @@ func draw_users_row():
 	var childrens = users_block.get_children()
 	for child in childrens:
 		child.queue_free()
+	var place : int = 0
 	for user in users:
 		var user_scene = user_info_packed_scene.instantiate()
+		user_scene.place = place
 		user_scene.username = user.name
 		user_scene.user_score = user.score
+		if user.name == Globals.user_data['username']:
+			user_scene.user_owner = true
 		users_block.add_child(user_scene)
+		place += 1
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
