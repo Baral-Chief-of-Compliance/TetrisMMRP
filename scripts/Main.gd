@@ -3,7 +3,7 @@ extends Node2D
 # Константы
 const GRID_WIDTH = 10
 const GRID_HEIGHT = 20
-const CELL_SIZE = 64
+const CELL_SIZE = 72
 const BASE_DROP_SPEED = 1.0
 const MAX_SPEED_CUP = 0.4
 

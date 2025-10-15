@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cdxrvdedkcdfu"]
+[gd_scene load_steps=36 format=3 uid="uid://cdxrvdedkcdfu"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_gy42u"]
 [ext_resource type="Texture2D" uid="uid://chuy2t0jlq432" path="res://assets/cells_back.png" id="2_1lpjx"]
@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://chjx4ogb76xkx" path="res://assets/BackCloudsForParalax.png" id="4_poe2v"]
 [ext_resource type="AudioStream" uid="uid://cr2cqgos333qo" path="res://assets/sounds/ocean_volumes.mp3" id="5_dweds"]
 [ext_resource type="AudioStream" uid="uid://dd8ml6bcvisdr" path="res://assets/sounds/repair_volumes.mp3" id="6_li21v"]
-[ext_resource type="Texture2D" uid="uid://dxgnqbhq27uwj" path="res://assets/ship.png" id="7_fldeb"]
 [ext_resource type="AudioStream" uid="uid://bgpw1s561487u" path="res://assets/sounds/fall_sound.mp3" id="8_l58yl"]
+[ext_resource type="Texture2D" uid="uid://g5oq18lfrb8" path="res://assets/ShipeForCells72size.png" id="8_pr0ym"]
 [ext_resource type="AudioStream" uid="uid://bqbi72f53ta7b" path="res://assets/sounds/tap_sound.mp3" id="9_bi0pa"]
 [ext_resource type="Texture2D" uid="uid://dnr154flixl1f" path="res://assets/shipShadow.png" id="9_ffc70"]
 [ext_resource type="PackedScene" uid="uid://dkawnmbt716yr" path="res://scenes/music_in_game.tscn" id="10_gsgyl"]
@@ -23,6 +23,7 @@
 [ext_resource type="FontFile" uid="uid://cu7ji2y23xvwi" path="res://assets/fonts/Yazo.ttf" id="18_44g2y"]
 [ext_resource type="Texture2D" uid="uid://i1uai8bad774" path="res://assets/Btns/ReplayBtn.png" id="18_im7sl"]
 [ext_resource type="Texture2D" uid="uid://depv2bseigv6b" path="res://assets/Btns/ReplayBtnPressed.png" id="19_7q6iq"]
+[ext_resource type="Texture2D" uid="uid://c3ai34xymjl36" path="res://assets/CraneForBigSizeWindow.png" id="19_g8gob"]
 [ext_resource type="Texture2D" uid="uid://bs38sni40ixvt" path="res://assets/Btns/HomeBtnNormal.png" id="20_fok0h"]
 [ext_resource type="Texture2D" uid="uid://c6ngi1ni8brnx" path="res://assets/Btns/HomeBtnPressed.png" id="21_3suhx"]
 [ext_resource type="Texture2D" uid="uid://bpld4usluv7bf" path="res://assets/Btns/sharedResutl/ShareBtnNormal.png" id="22_mg8bj"]
@@ -316,9 +317,49 @@ position = Vector2(0, 200)
 [node name="WavesLine12" parent="BackWaves" instance=ExtResource("3_gukrb")]
 position = Vector2(16, 220)
 
+[node name="WavesFront" type="Node2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(429, 1554)
+scale = Vector2(2, 2)
+
+[node name="WavesLine" parent="WavesFront" instance=ExtResource("3_gukrb")]
+
+[node name="WavesLine2" parent="WavesFront" instance=ExtResource("3_gukrb")]
+position = Vector2(16, 20)
+
+[node name="WavesLine3" parent="WavesFront" instance=ExtResource("3_gukrb")]
+position = Vector2(0, 40)
+
+[node name="WavesLine4" parent="WavesFront" instance=ExtResource("3_gukrb")]
+position = Vector2(16, 60)
+
+[node name="WavesLine5" parent="WavesFront" instance=ExtResource("3_gukrb")]
+position = Vector2(0, 80)
+
+[node name="WavesLine6" parent="WavesFront" instance=ExtResource("3_gukrb")]
+position = Vector2(16, 100)
+
+[node name="WavesLine7" parent="WavesFront" instance=ExtResource("3_gukrb")]
+position = Vector2(0, 120)
+
+[node name="WavesLine8" parent="WavesFront" instance=ExtResource("3_gukrb")]
+position = Vector2(16, 140)
+
+[node name="WavesLine9" parent="WavesFront" instance=ExtResource("3_gukrb")]
+position = Vector2(0, 160)
+
+[node name="WavesLine10" parent="WavesFront" instance=ExtResource("3_gukrb")]
+position = Vector2(16, 180)
+
+[node name="WavesLine11" parent="WavesFront" instance=ExtResource("3_gukrb")]
+position = Vector2(0, 200)
+
+[node name="WavesLine12" parent="WavesFront" instance=ExtResource("3_gukrb")]
+position = Vector2(16, 220)
+
 [node name="Ship" type="Sprite2D" parent="."]
-position = Vector2(420, 677)
-texture = ExtResource("7_fldeb")
+position = Vector2(542, 710)
+texture = ExtResource("8_pr0ym")
 
 [node name="Back" type="Sprite2D" parent="."]
 visible = false
@@ -336,7 +377,7 @@ size_flags_horizontal = 3
 color = Color(0, 0.819608, 0.952941, 0.270588)
 
 [node name="GameBoard" type="Node2D" parent="."]
-position = Vector2(100, 100)
+position = Vector2(180, 100)
 
 [node name="Grid" type="Node2D" parent="GameBoard"]
 
@@ -386,47 +427,8 @@ offset = Vector2(2.63, 0)
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="WavesFront" type="Node2D" parent="."]
-modulate = Color(0, 1, 1, 1)
-position = Vector2(429, 1554)
-scale = Vector2(2, 2)
-
-[node name="WavesLine" parent="WavesFront" instance=ExtResource("3_gukrb")]
-
-[node name="WavesLine2" parent="WavesFront" instance=ExtResource("3_gukrb")]
-position = Vector2(16, 20)
-
-[node name="WavesLine3" parent="WavesFront" instance=ExtResource("3_gukrb")]
-position = Vector2(0, 40)
-
-[node name="WavesLine4" parent="WavesFront" instance=ExtResource("3_gukrb")]
-position = Vector2(16, 60)
-
-[node name="WavesLine5" parent="WavesFront" instance=ExtResource("3_gukrb")]
-position = Vector2(0, 80)
-
-[node name="WavesLine6" parent="WavesFront" instance=ExtResource("3_gukrb")]
-position = Vector2(16, 100)
-
-[node name="WavesLine7" parent="WavesFront" instance=ExtResource("3_gukrb")]
-position = Vector2(0, 120)
-
-[node name="WavesLine8" parent="WavesFront" instance=ExtResource("3_gukrb")]
-position = Vector2(16, 140)
-
-[node name="WavesLine9" parent="WavesFront" instance=ExtResource("3_gukrb")]
-position = Vector2(0, 160)
-
-[node name="WavesLine10" parent="WavesFront" instance=ExtResource("3_gukrb")]
-position = Vector2(16, 180)
-
-[node name="WavesLine11" parent="WavesFront" instance=ExtResource("3_gukrb")]
-position = Vector2(0, 200)
-
-[node name="WavesLine12" parent="WavesFront" instance=ExtResource("3_gukrb")]
-position = Vector2(16, 220)
-
 [node name="ShipShadow" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(421, 1709)
 texture = ExtResource("9_ffc70")
 
@@ -457,11 +459,17 @@ bus = &"Volumes"
 [node name="GameInterface" parent="." instance=ExtResource("11_cgjtn")]
 
 [node name="Berth" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(553, 1411)
 texture = ExtResource("15_sd1jh")
 
+[node name="Crane" type="Sprite2D" parent="."]
+position = Vector2(220, -1096)
+scale = Vector2(2, 2)
+texture = ExtResource("19_g8gob")
+
 [node name="NextPieceDisplay" type="Node2D" parent="."]
-position = Vector2(733, 658)
+position = Vector2(71, -207)
 
 [node name="GameLose" type="CanvasLayer" parent="."]
 
