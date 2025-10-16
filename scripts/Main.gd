@@ -32,16 +32,6 @@ const PIECE_SCENES = {
 }
 
 
-## Для взрыва блоков
-@onready var expose_stream_player : AudioStreamPlayer2D = $SucessExplose
-
-## Для падения блока
-@onready var fall_stream_player : AudioStreamPlayer2D = $FallVolumes
-
-## Для поворота блока
-@onready var tap_stream_player : AudioStreamPlayer2D = $TapVolumes
-
-
 @export_group("Текстуры фигур")
 
 ## Для фигуры I
@@ -443,10 +433,7 @@ func rotate_piece():
 		if !found_valid:
 			current_rotation = old_rotation
 			current_position = old_position
-	
-	## Звук при повороте
-	tap_stream_player.play()
-	
+		
 	update_ghost_position()
 	draw_piece()
 	draw_ghost_piece()
@@ -748,10 +735,7 @@ func create_explosions(lines):
 				explosion.position = Vector2(x * CELL_SIZE + CELL_SIZE / 2, line * CELL_SIZE + CELL_SIZE / 2)
 				explosion.emitting = true
 				particles_container.add_child(explosion)
-				
-				##Проигрываю звук взрыва блоков
-				expose_stream_player.play()
-				
+								
 				# Автоматическое удаление
 				get_tree().create_timer(2.0).timeout.connect(
 					func(): 
@@ -836,8 +820,6 @@ func _input(event):
 		# Hard drop - мгновенное падение
 		current_position = ghost_position
 
-		## Падение блока в низ
-		fall_stream_player.play()
 		move_piece(Vector2i(0, 1))
 #		конец блока с клавой
 		
@@ -879,8 +861,7 @@ func handle_drag_event(event):
 #		мгновенное падение
 		# Hard drop - мгновенное падение
 		current_position = ghost_position
-		## Падение блока в низ
-		fall_stream_player.play()
+
 		move_piece(Vector2i(0, 1))
 #		конец мгновенного падения
 		is_tap = false  # Прекращаем считать это тапом

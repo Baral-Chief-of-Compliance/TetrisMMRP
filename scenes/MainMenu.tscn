@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cbdrgaivh4wje"]
+[gd_scene load_steps=22 format=3 uid="uid://cbdrgaivh4wje"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_83exj"]
 [ext_resource type="Texture2D" uid="uid://5153ejxv14cy" path="res://assets/BackgroundSky.png" id="1_y3gqm"]
@@ -21,15 +21,13 @@
 [ext_resource type="Texture2D" uid="uid://bsq3scj2wjmxj" path="res://assets/Btns/BackBtnPressed.png" id="15_yslaa"]
 [ext_resource type="PackedScene" uid="uid://0u0egro8g5of" path="res://scenes/bus_slider.tscn" id="16_2wtqq"]
 [ext_resource type="Texture2D" uid="uid://cc4m1dgp14ku7" path="res://assets/GameLogo/SoundsName.png" id="17_83q48"]
-[ext_resource type="AudioStream" uid="uid://rdastt61r01b" path="res://assets/music/MainMenu.mp3" id="17_gaupl"]
 
-[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "settings_menu", "music_player")]
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "settings_menu")]
 script = ExtResource("1_83exj")
 main_menu = NodePath("MainMenu/MenuPunkts")
 DOMAIN_NAME = "mmrp-games.ru"
 HTTPS = true
 settings_menu = NodePath("MainMenu/SettingsPunkts")
-music_player = NodePath("Music")
 
 [node name="MainMenu" type="Control" parent="."]
 layout_mode = 3
@@ -103,11 +101,13 @@ texture_hover = ExtResource("8_05qcw")
 texture_focused = ExtResource("8_05qcw")
 
 [node name="MarginContainer3" type="MarginContainer" parent="MainMenu/MenuPunkts"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="SettingsBtn" type="TextureButton" parent="MainMenu/MenuPunkts"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("9_c03jw")
 texture_pressed = ExtResource("11_f0w6g")
@@ -194,11 +194,6 @@ texture_normal = ExtResource("14_05pwj")
 texture_pressed = ExtResource("15_yslaa")
 texture_hover = ExtResource("15_yslaa")
 texture_focused = ExtResource("15_yslaa")
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_gaupl")
-autoplay = true
-bus = &"Music"
 
 [connection signal="button_down" from="MainMenu/MenuPunkts/PlayBtn" to="." method="_on_play_btn_button_down"]
 [connection signal="button_down" from="MainMenu/MenuPunkts/MMRPBtn" to="." method="_on_mmrp_btn_button_down"]

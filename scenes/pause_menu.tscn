@@ -182,11 +182,13 @@ texture_hover = ExtResource("3_steq5")
 texture_focused = ExtResource("3_steq5")
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="SettingsBtn" type="TextureButton" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("4_2uoko")
 texture_pressed = ExtResource("5_e5hhm")

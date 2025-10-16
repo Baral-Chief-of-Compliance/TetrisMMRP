@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cdxrvdedkcdfu"]
+[gd_scene load_steps=28 format=3 uid="uid://cdxrvdedkcdfu"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_gy42u"]
 [ext_resource type="Texture2D" uid="uid://chuy2t0jlq432" path="res://assets/cells_back.png" id="2_1lpjx"]
@@ -8,15 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://c3lo60qkjr7l2" path="res://assets/storm/lightningRowaseprite.png" id="4_c0b11"]
 [ext_resource type="Texture2D" uid="uid://bpogcebnsotrr" path="res://assets/FrontSkeyForParalax.png" id="4_dhp0v"]
 [ext_resource type="Texture2D" uid="uid://chjx4ogb76xkx" path="res://assets/BackCloudsForParalax.png" id="4_poe2v"]
-[ext_resource type="AudioStream" uid="uid://cr2cqgos333qo" path="res://assets/sounds/ocean_volumes.mp3" id="5_dweds"]
-[ext_resource type="AudioStream" uid="uid://dd8ml6bcvisdr" path="res://assets/sounds/repair_volumes.mp3" id="6_li21v"]
-[ext_resource type="AudioStream" uid="uid://bgpw1s561487u" path="res://assets/sounds/fall_sound.mp3" id="8_l58yl"]
 [ext_resource type="Texture2D" uid="uid://g5oq18lfrb8" path="res://assets/ShipeForCells72size.png" id="8_pr0ym"]
-[ext_resource type="AudioStream" uid="uid://bqbi72f53ta7b" path="res://assets/sounds/tap_sound.mp3" id="9_bi0pa"]
 [ext_resource type="Texture2D" uid="uid://dnr154flixl1f" path="res://assets/shipShadow.png" id="9_ffc70"]
-[ext_resource type="PackedScene" uid="uid://dkawnmbt716yr" path="res://scenes/music_in_game.tscn" id="10_gsgyl"]
 [ext_resource type="PackedScene" uid="uid://si6gmgky848r" path="res://scenes/game_interface.tscn" id="11_cgjtn"]
-[ext_resource type="AudioStream" uid="uid://cf6jihyostpns" path="res://assets/sounds/newTapSound.wav" id="12_5840j"]
 [ext_resource type="Texture2D" uid="uid://ib2b34oj0th2" path="res://assets/berth.png" id="15_sd1jh"]
 [ext_resource type="LabelSettings" uid="uid://cr45oyx4tfw17" path="res://SettingsForLabel.tres" id="17_4y0im"]
 [ext_resource type="Shader" path="res://scenes/pause_menu.gdshader" id="17_jq0q3"]
@@ -28,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://c6ngi1ni8brnx" path="res://assets/Btns/HomeBtnPressed.png" id="21_3suhx"]
 [ext_resource type="Texture2D" uid="uid://bpld4usluv7bf" path="res://assets/Btns/sharedResutl/ShareBtnNormal.png" id="22_mg8bj"]
 [ext_resource type="Texture2D" uid="uid://b5golyqucgco3" path="res://assets/Btns/sharedResutl/ShareBtnPressed.png" id="23_skagc"]
-[ext_resource type="AudioStream" uid="uid://cupwqucplyp0l" path="res://assets/sounds/ligthning.wav" id="27_c0slt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rghh8"]
 shader = ExtResource("17_jq0q3")
@@ -410,30 +403,6 @@ position = Vector2(543, 1911)
 scale = Vector2(1.14383, 1.14383)
 texture = ExtResource("9_ffc70")
 
-[node name="OceanVolumes" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_dweds")
-autoplay = true
-bus = &"Volumes"
-
-[node name="SucessExplose" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_bi0pa")
-bus = &"Volumes"
-
-[node name="RepairVolumes" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_li21v")
-autoplay = true
-bus = &"Volumes"
-
-[node name="FallVolumes" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_l58yl")
-bus = &"Volumes"
-
-[node name="TapVolumes" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_5840j")
-bus = &"Volumes"
-
-[node name="MusicINGame" parent="." instance=ExtResource("10_gsgyl")]
-
 [node name="GameInterface" parent="." instance=ExtResource("11_cgjtn")]
 
 [node name="Berth" type="Sprite2D" parent="."]
@@ -565,9 +534,6 @@ root_node = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_stbr2")
 }
-
-[node name="StromSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("27_c0slt")
 
 [node name="HttpRequestForUpdateUser" type="HTTPRequest" parent="."]
 
