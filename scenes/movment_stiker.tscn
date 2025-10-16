@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvt8n6s3822rx"]
+
+[ext_resource type="Script" path="res://scripts/movment_stiker.gd" id="1_icclb"]
+
+[node name="MovmentStiker" type="Sprite2D"]
+script = ExtResource("1_icclb")

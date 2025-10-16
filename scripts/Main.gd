@@ -289,6 +289,32 @@ var tap_time_threshold = 0.2
 @onready var particles_container = $ParticlesContainer
 
 
+#Двигающийся стикер
+var stickers_node = preload("res://scenes/movment_stiker.tscn")
+@export var sticker_spawn_point : Marker2D = null
+
+#Финальный стикер
+var finish_stickers = preload("res://scenes/score_sticker.tscn")
+@export var finish_sticker_spawn_point : Marker2D = null
+var finish_sticker_node : Sprite2D = null
+
+
+
+func spawn_sticker():
+	"""Спавн стикеры при разрушение полосы в тетрисе"""
+	var sticker_scene = stickers_node.instantiate()
+	sticker_scene.position = sticker_spawn_point.position
+	add_child(sticker_scene)
+	
+func spawn_finish_sticker():
+	"""Спавн стикеры на странице результатов"""
+	finish_sticker_node = finish_stickers.instantiate()
+	finish_sticker_node.position = finish_sticker_spawn_point.position
+	loseMenu.add_child(finish_sticker_node)
+	
+func clear_finish_sticker():
+	if finish_sticker_node != null:
+		finish_sticker_node.queue_free()
 
 func _ready():
 	initialize_grid()
@@ -329,6 +355,7 @@ func start_new_game():
 	update_ui()
 #	game_over_label.visible = false
 	loseMenu.visible = false
+	clear_finish_sticker()
 	gameInterface.visible = true
 	
 	timer.stop()
@@ -376,6 +403,7 @@ func spawn_new_piece():
 				)
 			
 		loseMenu.visible = true
+		spawn_finish_sticker()
 		return
 	
 	draw_piece()
@@ -730,6 +758,7 @@ func create_explosions(lines):
 						if is_instance_valid(explosion):
 							explosion.queue_free()
 				)
+	spawn_sticker()
 
 func update_score(lines_cleared_count):
 	var points = 0

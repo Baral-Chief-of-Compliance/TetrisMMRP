@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cdxrvdedkcdfu"]
+[gd_scene load_steps=35 format=3 uid="uid://cdxrvdedkcdfu"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_gy42u"]
 [ext_resource type="Texture2D" uid="uid://chuy2t0jlq432" path="res://assets/cells_back.png" id="2_1lpjx"]
@@ -28,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://c6ngi1ni8brnx" path="res://assets/Btns/HomeBtnPressed.png" id="21_3suhx"]
 [ext_resource type="Texture2D" uid="uid://bpld4usluv7bf" path="res://assets/Btns/sharedResutl/ShareBtnNormal.png" id="22_mg8bj"]
 [ext_resource type="Texture2D" uid="uid://b5golyqucgco3" path="res://assets/Btns/sharedResutl/ShareBtnPressed.png" id="23_skagc"]
-[ext_resource type="Texture2D" uid="uid://bq2s3he4okkjq" path="res://assets/storm/DockerFace.png" id="25_cr43o"]
 [ext_resource type="AudioStream" uid="uid://cupwqucplyp0l" path="res://assets/sounds/ligthning.wav" id="27_c0slt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rghh8"]
@@ -58,19 +57,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath("../ParallaxBackground/NearestClouds/Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(787, 3000)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../ParallaxBackground/NearestClouds/Sprite2D:modulate")
+tracks/2/path = NodePath("../ParallaxBackground/BackClouds/Sprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -82,7 +81,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../ParallaxBackground/BackClouds/Sprite2D:modulate")
+tracks/3/path = NodePath("../ParallaxBackground/ParallaxLayer/Sprite2D:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -94,22 +93,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../ParallaxBackground/ParallaxLayer/Sprite2D:modulate")
+tracks/4/path = NodePath("../StromSound:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../StromSound:playing")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -134,58 +121,46 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath("../ParallaxBackground/NearestClouds/Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(787, 3000), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(780, 1550), Vector2(787, 1550), Vector2(787, 3000)]
+"values": [Color(1, 1, 1, 1), Color(0.45098, 0.45098, 0.45098, 1), Color(0.45098, 0.45098, 0.45098, 1), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../ParallaxBackground/NearestClouds/Sprite2D:modulate")
+tracks/2/path = NodePath("../ParallaxBackground/BackClouds/Sprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2, 2.6, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.45098, 0.45098, 0.45098, 1), Color(0.45098, 0.45098, 0.45098, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(0.419608, 0.419608, 0.419608, 1), Color(0.419608, 0.419608, 0.419608, 1), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../ParallaxBackground/BackClouds/Sprite2D:modulate")
+tracks/3/path = NodePath("../ParallaxBackground/ParallaxLayer/Sprite2D:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.2, 2.6, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.419608, 0.419608, 0.419608, 1), Color(0.419608, 0.419608, 0.419608, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(0.568627, 0.568627, 0.568627, 1), Color(0.568627, 0.568627, 0.568627, 1), Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../ParallaxBackground/ParallaxLayer/Sprite2D:modulate")
+tracks/4/path = NodePath("../StromSound:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 2.6, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.568627, 0.568627, 0.568627, 1), Color(0.568627, 0.568627, 0.568627, 1), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../StromSound:playing")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0.2, 2.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -198,12 +173,14 @@ _data = {
 "StromAnimation": SubResource("Animation_ds30t")
 }
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("share_btn", "http_request", "gameInterface", "loseMenu")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("share_btn", "http_request", "gameInterface", "loseMenu", "sticker_spawn_point", "finish_sticker_spawn_point")]
 script = ExtResource("1_gy42u")
 share_btn = NodePath("GameLose/Control/VBoxContainer/MarginContainer4/ShareResultButton")
 http_request = NodePath("HttpRequestForUpdateUser")
 gameInterface = NodePath("GameInterface")
 loseMenu = NodePath("GameLose")
+sticker_spawn_point = NodePath("StickerSpawnPoint")
+finish_sticker_spawn_point = NodePath("GameLose/SpawnPoinFinishPoint")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_aio3j")
@@ -222,6 +199,7 @@ position = Vector2(492, 318)
 scale = Vector2(5, 5)
 texture = ExtResource("4_c0b11")
 hframes = 11
+frame = 10
 
 [node name="BackClouds" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.4, 0.4)
@@ -428,8 +406,8 @@ offset = Vector2(2.63, 0)
 [node name="Timer" type="Timer" parent="."]
 
 [node name="ShipShadow" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(421, 1709)
+position = Vector2(543, 1911)
+scale = Vector2(1.14383, 1.14383)
 texture = ExtResource("9_ffc70")
 
 [node name="OceanVolumes" type="AudioStreamPlayer2D" parent="."]
@@ -472,6 +450,9 @@ texture = ExtResource("19_g8gob")
 position = Vector2(71, -207)
 
 [node name="GameLose" type="CanvasLayer" parent="."]
+
+[node name="SpawnPoinFinishPoint" type="Marker2D" parent="GameLose"]
+position = Vector2(325, 322)
 
 [node name="ColorRect" type="ColorRect" parent="GameLose"]
 material = SubResource("ShaderMaterial_rghh8")
@@ -571,11 +552,6 @@ texture_pressed = ExtResource("21_3suhx")
 texture_hover = ExtResource("21_3suhx")
 texture_focused = ExtResource("21_3suhx")
 
-[node name="Docker" type="Sprite2D" parent="."]
-position = Vector2(787, 3000)
-scale = Vector2(3, 3)
-texture = ExtResource("25_cr43o")
-
 [node name="UpDownSpeed" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
@@ -585,7 +561,7 @@ wait_time = 90.0
 autostart = true
 
 [node name="AnimationStorm" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Docker")
+root_node = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_stbr2")
 }
@@ -594,6 +570,9 @@ libraries = {
 stream = ExtResource("27_c0slt")
 
 [node name="HttpRequestForUpdateUser" type="HTTPRequest" parent="."]
+
+[node name="StickerSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(79, 1643)
 
 [connection signal="button_down" from="GameLose/Control/VBoxContainer/MarginContainer4/ShareResultButton" to="." method="_on_share_result_button_button_down"]
 [connection signal="button_down" from="GameLose/Control/VBoxContainer/ReloadBtn" to="." method="_on_reload_btn_button_down"]
