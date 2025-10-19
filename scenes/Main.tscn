@@ -406,6 +406,7 @@ offset = Vector2(2.63, 0)
 [node name="Timer" type="Timer" parent="."]
 
 [node name="ShipShadow" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(543, 1911)
 scale = Vector2(1.14383, 1.14383)
 texture = ExtResource("9_ffc70")
